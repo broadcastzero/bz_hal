@@ -1,13 +1,12 @@
-﻿/* NS: SocketServ */
+﻿/* NS: Server */
 /* FN: Server.cs */
 
 using System;
-using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace SocketServ
+namespace Server
 {
     public class Server
     {

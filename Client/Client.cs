@@ -1,4 +1,4 @@
-﻿/* NS: SocketCli */
+﻿/* NS: Client */
 /* FN: Client.cs */
 
 using System;
@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 
-namespace SocketCli
+namespace Client
 {
     public class Client
     {

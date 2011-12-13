@@ -1,9 +1,9 @@
-﻿/* NS: SocketCli */
+﻿/* NS: Client */
 /* FN: Program.cs */
 
 using System;
 
-namespace SocketCli
+namespace Client
 {
     class Program
     {

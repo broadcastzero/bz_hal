@@ -1,9 +1,9 @@
-﻿/* NS: SocketServ */
+﻿/* NS: Server */
 /* FN: Program.cs */
 
 using System;
 
-namespace SocketServ
+namespace Server
 {
     class Program
     {
