@@ -1,0 +1,5 @@
+C:\Users\broadcastzero\0 FH\3. Semester\SWE\0 Hauptuebung\HAL_Solution\Server\bin\Debug\Server.exe
+C:\Users\broadcastzero\0 FH\3. Semester\SWE\0 Hauptuebung\HAL_Solution\Server\bin\Debug\Server.pdb
+C:\Users\broadcastzero\0 FH\3. Semester\SWE\0 Hauptuebung\HAL_Solution\Server\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\broadcastzero\0 FH\3. Semester\SWE\0 Hauptuebung\HAL_Solution\Server\obj\x86\Debug\Server.exe
+C:\Users\broadcastzero\0 FH\3. Semester\SWE\0 Hauptuebung\HAL_Solution\Server\obj\x86\Debug\Server.pdb
