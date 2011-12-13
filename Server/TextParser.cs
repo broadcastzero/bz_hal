@@ -9,7 +9,7 @@ namespace Server
     public class TextParser
     {
         private string _clientsentence;
-        private char[][] analysedword;
+        private char[][] _analysedword;
 
         public TextParser(string cs)
         { 
