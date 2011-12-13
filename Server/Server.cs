@@ -28,7 +28,14 @@ namespace SocketServ
             {
                 Console.WriteLine("Waiting for a new connection...");
                 //blocks until a client connects to the server
-                this.tcpListener.Start();
+                try
+                {
+                    this.tcpListener.Start();
+                }
+                catch (SocketException e)   //if socket is invalid
+                {
+                    throw e;
+                }
                 Socket sock = this.tcpListener.AcceptSocket();
 
                 //ClientComm-Class is responsible for receiving sentences
