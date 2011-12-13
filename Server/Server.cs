@@ -1,5 +1,6 @@
 ﻿/* NS: Server */
 /* FN: Server.cs */
+/* FUNCTION: Wait for new connections and start a new thread for each. */
 
 using System;
 using System.Net;

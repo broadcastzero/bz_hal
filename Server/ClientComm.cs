@@ -1,5 +1,6 @@
 ﻿/* NS: Server */
 /* FN: ClientComm.cs */
+/* FUNCTION: Recieve sentence from client and send it to TextParser (if client doesn't want to quit!) */
 
 using System;
 using System.Net;
@@ -33,6 +34,7 @@ namespace Server
                     stringline = sr.ReadLine();
                     /* SEND STRING TO TEXT PARSER */
                     TextParser tp = new TextParser(stringline);
+                    tp.SplitSentence();
                     /* UNTIL NOW, THE SERVER ONLY PRINTS WHAT HE HAS RECEIVED */
                     //Output
                     Console.WriteLine(stringline);

@@ -1,5 +1,6 @@
 ﻿/* NS: Client */
 /* FN: Client.cs */
+/* FUNCTION: Connect to server, ask for sentence and sent it to the server. Receive answer from the server afterwards. */
 
 using System;
 using System.Net;
