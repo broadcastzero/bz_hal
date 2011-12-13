@@ -1,4 +1,4 @@
-./Server/obj/
-./Server/bin/
-./Client/obj/
-./Client/bin/
+Server/obj/
+Server/bin/
+Client/obj/
+Client/bin/
