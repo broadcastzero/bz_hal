@@ -31,8 +31,8 @@ namespace Server
                 try
                 {
                     stringline = sr.ReadLine();
-                    /* SEND STRING TO PLUGIN MANAGER */
-                    PluginManager pm = new PluginManager(stringline);
+                    /* SEND STRING TO TEXT PARSER */
+                    TextParser tp = new TextParser(stringline);
                     /* UNTIL NOW, THE SERVER ONLY PRINTS WHAT HE HAS RECEIVED */
                     //Output
                     Console.WriteLine(stringline);
