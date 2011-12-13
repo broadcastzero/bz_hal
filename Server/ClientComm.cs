@@ -32,7 +32,7 @@ namespace Server
                 {
                     stringline = sr.ReadLine();
                     /* SEND STRING TO PLUGIN MANAGER */
-                    //PluginMana
+                    PluginManager pm = new PluginManager(stringline);
                     /* UNTIL NOW, THE SERVER ONLY PRINTS WHAT HE HAS RECEIVED */
                     //Output
                     Console.WriteLine(stringline);
