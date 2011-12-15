@@ -1,13 +1,13 @@
-﻿/* NS: SocketServ */
+﻿/* NS: Server */
 /* FN: Server.cs */
+/* FUNCTION: Wait for new connections and start a new thread for each. */
 
 using System;
-using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace SocketServ
+namespace Server
 {
     public class Server
     {
@@ -28,7 +28,14 @@ namespace SocketServ
             {
                 Console.WriteLine("Waiting for a new connection...");
                 //blocks until a client connects to the server
-                this.tcpListener.Start();
+                try
+                {
+                    this.tcpListener.Start();
+                }
+                catch (SocketException e)   //if socket is invalid
+                {
+                    throw e;
+                }
                 Socket sock = this.tcpListener.AcceptSocket();
 
                 //ClientComm-Class is responsible for receiving sentences

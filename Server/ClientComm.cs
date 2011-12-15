@@ -1,15 +1,13 @@
-﻿/* NS: SocketServ */
+﻿/* NS: Server */
 /* FN: ClientComm.cs */
+/* FUNCTION: Recieve sentence from client and send it to TextParser (if client doesn't want to quit!) */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
 
-namespace SocketServ
+namespace Server
 {
     public class ClientComm
     {
@@ -34,19 +32,21 @@ namespace SocketServ
                 try
                 {
                     stringline = sr.ReadLine();
-                    /* SEND STRING TO PLUGIN MANAGER */
-                    /* UNTIL NOW, THE SERVER ONLY PRINTS WHAT HE RECEIVED */
+                    /* SEND STRING TO TEXT PARSER */
+                    TextParser tp = new TextParser(stringline);
+                    tp.SplitSentence();
+                    /* UNTIL NOW, THE SERVER ONLY PRINTS WHAT HE HAS RECEIVED */
                     //Output
                     Console.WriteLine(stringline);
                 }
                 catch (Exception e)
                 {
-                    throw e;
-                    //Console.WriteLine(e.Message); return;                    
+                    throw e;                  
                 }
-            } while (!stringline.Contains("quit")); //(!sr.EndOfStream);// && !stringline.EndsWith("quit."));
+            } while (!stringline.Contains("quit"));
 
             Console.WriteLine("A client has quit the connection.");
+            //Thread will be quitted now
         }
     }
 }

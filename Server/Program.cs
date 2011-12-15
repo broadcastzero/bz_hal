@@ -1,9 +1,10 @@
-﻿/* NS: SocketServ */
+﻿/* NS: Server */
 /* FN: Program.cs */
+/* FUNCTION: Create server instance and call method "Server::ListenForClients" */
 
 using System;
 
-namespace SocketServ
+namespace Server
 {
     class Program
     {

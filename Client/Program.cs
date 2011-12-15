@@ -1,9 +1,10 @@
-﻿/* NS: SocketCli */
+﻿/* NS: Client */
 /* FN: Program.cs */
+/* FUNCTION: Initialize Client-class */
 
 using System;
 
-namespace SocketCli
+namespace Client
 {
     class Program
     {

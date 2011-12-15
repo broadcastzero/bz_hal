@@ -1,5 +1,0 @@
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\Server\bin\Debug\Server.exe
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\Server\bin\Debug\Server.pdb
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\Server\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\Server\obj\x86\Debug\Server.exe
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\Server\obj\x86\Debug\Server.pdb
