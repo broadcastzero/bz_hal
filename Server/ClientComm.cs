@@ -52,14 +52,14 @@ namespace Server
                     if (stringline != null)
                     {
                         Tp_.SplitSentence(stringline);
-                        /* UNTIL NOW, THE SERVER ONLY PRINTS WHAT HE HAS RECEIVED */
-                        //Output
+                        /* OUTPUT */
                         Console.WriteLine(stringline);
                     }
                 }
                 catch (Exception e)
                 {
-                    throw e;                  
+                    Console.WriteLine(e.Message);
+                    break;
                 }
             } while (!stringline.Contains("quit"));
 
