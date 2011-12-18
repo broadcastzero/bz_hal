@@ -58,13 +58,16 @@ namespace Server
                 }
                 catch (Exception e)
                 {
+                    Console.WriteLine("---------------------------------");
                     Console.WriteLine(e.Message);
                     break;
                 }
             } while (!stringline.Contains("quit"));
 
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("A client has quit the connection.");
-            //Thread will be quitted now
+            Console.WriteLine("---------------------------------");
+            //Thread will quit now
         }
     }
 }
