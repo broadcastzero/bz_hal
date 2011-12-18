@@ -12,17 +12,23 @@ namespace Server
     public class ClientComm
     {
         /* PRIVATE VARS */
-        private Socket _Sock;
-        private NetworkStream _Stream;
-        private StreamReader _Sr;
         /* PUBLIC VARS */
-        public StreamReader Sr { get; set; }
-        public Socket Sock { get; set; }
-        public NetworkStream Stream { get; set; }
+        public StreamReader Sr_ { get; set; }
+        public Socket Sock_ { get; set; }
+        public NetworkStream Stream_ { get; set; }
+        public TextParser Tp_ { get; set; }
 
+        /* CONSTRUCTOR */
         public ClientComm(Socket sock)
         {
-            Sock = sock;
+            Sock_ = sock;
+            Tp_ = new TextParser();
+            try
+            {
+                Stream_ = new NetworkStream(Sock_);
+                Sr_ = new StreamReader(Stream_);
+            }
+            catch (Exception e) { throw e; }
         }
 
         /* Entry-class for each connected thread */
@@ -30,27 +36,22 @@ namespace Server
         {
             try
             {
-                Console.WriteLine("A client connected from {0}", Sock.RemoteEndPoint);
-                Stream = new NetworkStream(Sock);
-                Sr = new StreamReader(Stream);
+                Console.WriteLine("A client connected from {0}", Sock_.RemoteEndPoint);
             }
             catch (Exception e)
             { throw e; }
 
-            TextParser tp = new TextParser();
-
             //receive from client in loop
-            string stringline;
+            string stringline = "";
             do
             {
                 try
                 {
-                    stringline = sr.ReadLine();
+                    stringline = Sr_.ReadLine();
                     /* SEND STRING TO TEXT PARSER */
                     if (stringline != null)
                     {
-
-                        tp.SplitSentence();
+                        Tp_.SplitSentence(stringline);
                         /* UNTIL NOW, THE SERVER ONLY PRINTS WHAT HE HAS RECEIVED */
                         //Output
                         Console.WriteLine(stringline);

@@ -23,7 +23,6 @@ namespace Server
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("Error -" + e.Message);
             }
 

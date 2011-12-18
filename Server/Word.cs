@@ -8,7 +8,6 @@ namespace Server
 {
     public class Word
     {
-        private char _type;
-        public char type { get; set; }
+        public char Type { get; set; }
     }
 }

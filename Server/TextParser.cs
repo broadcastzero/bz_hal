@@ -10,23 +10,22 @@ namespace Server
 {
     public class TextParser
     {
-        private string _clientsentence;
-        private List<Word> _Analysedword;
-
-        public TextParser()
-        {}
+        /* PRIVATE VARS */
+        /* PUBLIC VARS */
+        public string ClientSentence_ { get; set; }
+        public List<Word> Analysedword_ { get; set; }
 
         public void SplitSentence(string cs)
         {
             //pass sentence
-            this._clientsentence = cs;
+            ClientSentence_ = cs;
 
             //split sentence into words and save it into list
-            while (true)
-            {
-                Word nword = new Word();
-                _Analysedword.Add(nword);
-            }
+            //while (true)
+            //{
+                //Word nword = new Word();
+                //this.Analysedword.Add(nword);
+            //}
             //save type info (N...noun, V...Verb, A...adjective, R...article, P...preposition)
         }
     }

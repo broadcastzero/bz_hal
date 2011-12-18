@@ -11,14 +11,22 @@ namespace Server
 {
     public class Server
     {
-        private TcpListener tcpListener;
-        private Thread clientThread;
+        /* PUBLIC VARS */
+        public TcpListener TcpListener_ { get; set; }
+        public Thread ClientThread_ { get; set; }
+        public ClientComm CComm_ { get; set; }
+        public Socket Sock_ { get; set; }
 
         /* Constructor */
         public Server()
         {
             //create listener - second param = port
-            this.tcpListener = new TcpListener(IPAddress.Any, 8080);
+            try
+            {
+                TcpListener_ = new TcpListener(IPAddress.Any, 8080);
+            }
+            catch (Exception e)
+            { throw e; }
         }
 
         /* Wait for connections - threading function */
@@ -30,22 +38,23 @@ namespace Server
                 //blocks until a client connects to the server
                 try
                 {
-                    this.tcpListener.Start();
+                    TcpListener_.Start();
                 }
                 catch (SocketException e)   //if socket is invalid
                 {
                     throw e;
                 }
-                Socket sock = this.tcpListener.AcceptSocket();
+                //create new socket
+                Sock_ = TcpListener_.AcceptSocket();
 
-                //ClientComm-Class is responsible for receiving sentences
-                ClientComm ccomm = new ClientComm(sock);
+                //ClientComm-class is responsible for receiving sentences
+                CComm_ = new ClientComm(Sock_);
 
                 /* create a thread to handle communication with connected client */
-                this.clientThread = new Thread(new ThreadStart(ccomm.WelcomeClient));
+                ClientThread_ = new Thread(new ThreadStart(CComm_.WelcomeClient));
                 try
                 {
-                    clientThread.Start();
+                    ClientThread_.Start();
                 }
                 catch (Exception e)
                 {
