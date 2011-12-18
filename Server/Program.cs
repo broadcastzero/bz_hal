@@ -24,6 +24,7 @@ namespace Server
             catch (Exception e)
             {
                 Console.WriteLine("Error -" + e.Message);
+                Environment.Exit(1);
             }
 
             Console.ReadLine();
