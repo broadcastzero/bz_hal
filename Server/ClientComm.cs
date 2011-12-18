@@ -11,19 +11,33 @@ namespace Server
 {
     public class ClientComm
     {
-        private Socket sock;
+        /* PRIVATE VARS */
+        private Socket _Sock;
+        private NetworkStream _Stream;
+        private StreamReader _Sr;
+        /* PUBLIC VARS */
+        public StreamReader Sr { get; set; }
+        public Socket Sock { get; set; }
+        public NetworkStream Stream { get; set; }
 
-        public ClientComm(Socket c_sock)
+        public ClientComm(Socket sock)
         {
-            this.sock = c_sock;
+            Sock = sock;
         }
 
         /* Entry-class for each connected thread */
         public void WelcomeClient()
         {
-            Console.WriteLine("A client connected from {0}", sock.RemoteEndPoint);
-            NetworkStream stream = new NetworkStream(this.sock);
-            StreamReader sr = new StreamReader(stream);
+            try
+            {
+                Console.WriteLine("A client connected from {0}", Sock.RemoteEndPoint);
+                Stream = new NetworkStream(Sock);
+                Sr = new StreamReader(Stream);
+            }
+            catch (Exception e)
+            { throw e; }
+
+            TextParser tp = new TextParser();
 
             //receive from client in loop
             string stringline;
@@ -33,11 +47,14 @@ namespace Server
                 {
                     stringline = sr.ReadLine();
                     /* SEND STRING TO TEXT PARSER */
-                    TextParser tp = new TextParser(stringline);
-                    tp.SplitSentence();
-                    /* UNTIL NOW, THE SERVER ONLY PRINTS WHAT HE HAS RECEIVED */
-                    //Output
-                    Console.WriteLine(stringline);
+                    if (stringline != null)
+                    {
+
+                        tp.SplitSentence();
+                        /* UNTIL NOW, THE SERVER ONLY PRINTS WHAT HE HAS RECEIVED */
+                        //Output
+                        Console.WriteLine(stringline);
+                    }
                 }
                 catch (Exception e)
                 {

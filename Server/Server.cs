@@ -41,8 +41,7 @@ namespace Server
                 //ClientComm-Class is responsible for receiving sentences
                 ClientComm ccomm = new ClientComm(sock);
 
-                //create a thread to handle communication
-                //with connected client
+                /* create a thread to handle communication with connected client */
                 this.clientThread = new Thread(new ThreadStart(ccomm.WelcomeClient));
                 try
                 {
