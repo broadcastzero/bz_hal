@@ -36,6 +36,7 @@ namespace TextParserTest
             Console.WriteLine("--End of sentence--");
         }
 
+        /* Tests if type fits */
         [Test]
         public void TypeTest()
         {
