@@ -60,7 +60,7 @@ namespace Server
                 {
                     Console.WriteLine("---------------------------------");
                     Console.WriteLine(e.Message);
-                    break;
+                    break;  //quit
                 }
             } while (!stringline.Contains("quit"));
 

@@ -2,6 +2,7 @@
 /* FN: TextParser.cs */
 /* FUNCTION: Split sentence into words, analyse them and save their position in the sentence */
 /* Is called by ClientComm */
+/* All thrown exceptions will be handled by ClientComm and quit the connection */
 
 using System;
 using System.Collections.Generic;
