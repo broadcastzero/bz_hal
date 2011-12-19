@@ -8,6 +8,19 @@ namespace Server
 {
     public class Word
     {
-        public char Type { get; set; }
+        /* PRIVATE VARS */
+        // possible: N...Noun, V...Verb, A...Adjective, R...Article, P...Preposition
+        private char _Type;
+
+        /* PUBLIC VARS */        
+        public char Type_ 
+        {
+            get { return _Type; }
+            set 
+            {
+                if (value == 'N' || value == 'V' || value == 'A' || value == 'R' || value == 'P')
+                { _Type = value; }
+            }
+        }
     }
 }

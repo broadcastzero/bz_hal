@@ -48,11 +48,11 @@ namespace Server
                 try
                 {
                     stringline = Sr_.ReadLine();
-                    /* SEND STRING TO TEXT PARSER */
+                    //send string to text parser
                     if (stringline != null)
                     {
                         Tp_.SplitSentence(stringline);
-                        /* OUTPUT */
+                        //output
                         Console.WriteLine(stringline);
                     }
                 }
