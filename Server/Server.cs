@@ -12,10 +12,10 @@ namespace Server
     public class Server
     {
         /* PUBLIC VARS */
-        public TcpListener TcpListener_ { get; set; }
-        public Thread ClientThread_ { get; set; }
-        public ClientComm CComm_ { get; set; }
-        public Socket Sock_ { get; set; }
+        public TcpListener TcpListener { get; set; }
+        public Thread ClientThread { get; set; }
+        public ClientComm CComm { get; set; }
+        public Socket Sock { get; set; }
 
         /* Constructor */
         public Server()
@@ -23,7 +23,7 @@ namespace Server
             //create listener - second param = port
             try
             {
-                TcpListener_ = new TcpListener(IPAddress.Any, 8080);
+                TcpListener = new TcpListener(IPAddress.Any, 8080);
             }
             catch (Exception) { throw; }
         }
@@ -37,23 +37,23 @@ namespace Server
                 //blocks until a client connects to the server
                 try
                 {
-                    TcpListener_.Start();
+                    TcpListener.Start();
                 }
                 catch (SocketException)   //if socket is invalid
                 {
                     throw;
                 }
                 //create new socket
-                Sock_ = TcpListener_.AcceptSocket();
+                Sock = TcpListener.AcceptSocket();
 
                 //ClientComm-class is responsible for receiving sentences
-                CComm_ = new ClientComm(Sock_);
+                CComm = new ClientComm(Sock);
 
                 /* create a thread to handle communication with connected client */
-                ClientThread_ = new Thread(new ThreadStart(CComm_.WelcomeClient));
+                ClientThread = new Thread(new ThreadStart(CComm.WelcomeClient));
                 try
                 {
-                    ClientThread_.Start();
+                    ClientThread.Start();
                 }
                 catch (Exception)
                 {
