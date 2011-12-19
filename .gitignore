@@ -2,3 +2,5 @@ Server/obj/
 Server/bin/
 Client/obj/
 Client/bin/
+TextParserTest/obj/
+TextParsertest/bin/
