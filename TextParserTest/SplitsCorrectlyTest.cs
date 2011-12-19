@@ -24,7 +24,6 @@ namespace TextParserTest
         [Test]
         public void SplitTest()
         {
-            _Tp = new TextParser();
             string s = "Das ist mein Testsatz.";
             _Tp.SplitSentence(s);
             Assert.IsNotEmpty(_Tp.AnalysedWords);
@@ -35,6 +34,17 @@ namespace TextParserTest
             foreach (Word w in _Tp.AnalysedWords)
             { Console.WriteLine(w.Value); }
             Console.WriteLine("--End of sentence--");
+        }
+
+        [Test]
+        public void TypeTest()
+        {
+            string s = "Das ist mein Testsatz.";
+            _Tp.SplitSentence(s);
+            foreach (Word w in _Tp.AnalysedWords)
+            {
+                Assert.That(w.Type == 'X');
+            }
         }
     }
 }

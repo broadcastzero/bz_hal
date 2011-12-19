@@ -21,6 +21,7 @@ namespace Server
             {
                 if (value == 'N' || value == 'V' || value == 'A' || value == 'R' || value == 'P')
                 { _Type = value; }
+                else { _Type = 'X'; } //type not found
             }
         }
 
