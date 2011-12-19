@@ -18,14 +18,14 @@ namespace Server
 
         public void SplitSentence(string cs)
         {
-            //pass sentence
+            //pass and split sentence
             ClientSentence = cs;
-            //split sentence
             char[] seps = { ' ', '.' };
             string[] words = cs.Split(seps);
-            AnalysedWord = new List<Word>();
+
             //create word-instance for each word and save it into list
-           foreach(string w in words)
+            AnalysedWord = new List<Word>();
+            foreach(string w in words)
             {
                 Word nword = new Word(w);
                 nword.Type = this.GetType(nword);
