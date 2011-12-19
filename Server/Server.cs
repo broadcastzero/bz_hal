@@ -25,8 +25,7 @@ namespace Server
             {
                 TcpListener_ = new TcpListener(IPAddress.Any, 8080);
             }
-            catch (Exception e)
-            { throw e; }
+            catch (Exception) { throw; }
         }
 
         /* Wait for connections - threading function */
@@ -40,9 +39,9 @@ namespace Server
                 {
                     TcpListener_.Start();
                 }
-                catch (SocketException e)   //if socket is invalid
+                catch (SocketException)   //if socket is invalid
                 {
-                    throw e;
+                    throw;
                 }
                 //create new socket
                 Sock_ = TcpListener_.AcceptSocket();
@@ -56,9 +55,9 @@ namespace Server
                 {
                     ClientThread_.Start();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    throw e; //throw to main
+                    throw; //throw to main
                 }
             }
         }

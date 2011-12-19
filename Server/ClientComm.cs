@@ -28,7 +28,7 @@ namespace Server
                 Stream_ = new NetworkStream(Sock_);
                 Sr_ = new StreamReader(Stream_);
             }
-            catch (Exception e) { throw e; }
+            catch (Exception) { throw; }
         }
 
         /* Entry-class for each connected thread */
@@ -38,8 +38,8 @@ namespace Server
             {
                 Console.WriteLine("A client connected from {0}", Sock_.RemoteEndPoint);
             }
-            catch (Exception e)
-            { Sr_.Close(); throw e; }
+            catch (Exception)
+            { Sr_.Close(); throw; }
 
             //receive from client in loop
             string stringline = "";
