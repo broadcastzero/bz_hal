@@ -13,20 +13,20 @@ namespace Server
     {
         /* PRIVATE VARS */
         /* PUBLIC VARS */
-        public Socket Sock_ { get; set; }
-        public NetworkStream Stream_ { get; set; }
-        public StreamReader Sr_ { get; set; }
-        public TextParser Tp_ { get; set; }
+        public Socket Sock { get; set; }
+        public NetworkStream Stream { get; set; }
+        public StreamReader Sr { get; set; }
+        public TextParser Tp { get; set; }
 
         /* CONSTRUCTOR */
         public ClientComm(Socket sock)
         {
-            Sock_ = sock;
-            Tp_ = new TextParser();
+            Sock = sock;
+            Tp = new TextParser();
             try
             {
-                Stream_ = new NetworkStream(Sock_);
-                Sr_ = new StreamReader(Stream_);
+                Stream = new NetworkStream(Sock);
+                Sr = new StreamReader(Stream);
             }
             catch (Exception) { throw; }
         }
@@ -36,10 +36,10 @@ namespace Server
         {
             try
             {
-                Console.WriteLine("A client connected from {0}", Sock_.RemoteEndPoint);
+                Console.WriteLine("A client connected from {0}", Sock.RemoteEndPoint);
             }
             catch (Exception)
-            { Sr_.Close(); throw; }
+            { Sr.Close(); throw; }
 
             //receive from client in loop
             string stringline = "";
@@ -47,7 +47,7 @@ namespace Server
             {
                 try
                 {
-                    stringline = Sr_.ReadLine();
+                    stringline = Sr.ReadLine();
                     //send string to text parser
                     if (stringline != null)
                     {
@@ -65,7 +65,7 @@ namespace Server
             } while (!stringline.Contains("quit"));
 
             //Close open connections
-            Sr_.Close(); //also calls Sock_.Close and Stream_.Close()
+            Sr.Close(); //also calls Sock_.Close and Stream_.Close()
             Console.WriteLine("---------------------------------");
             Console.WriteLine("A client has quit the connection.");
             Console.WriteLine("---------------------------------");
