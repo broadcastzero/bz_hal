@@ -13,9 +13,9 @@ namespace Server
     {
         /* PRIVATE VARS */
         /* PUBLIC VARS */
-        public StreamReader Sr_ { get; set; }
         public Socket Sock_ { get; set; }
         public NetworkStream Stream_ { get; set; }
+        public StreamReader Sr_ { get; set; }
         public TextParser Tp_ { get; set; }
 
         /* CONSTRUCTOR */
@@ -39,7 +39,7 @@ namespace Server
                 Console.WriteLine("A client connected from {0}", Sock_.RemoteEndPoint);
             }
             catch (Exception e)
-            { throw e; }
+            { Sr_.Close(); throw e; }
 
             //receive from client in loop
             string stringline = "";
@@ -64,6 +64,8 @@ namespace Server
                 }
             } while (!stringline.Contains("quit"));
 
+            //Close open connections
+            Sr_.Close(); //also calls Sock_.Close and Stream_.Close()
             Console.WriteLine("---------------------------------");
             Console.WriteLine("A client has quit the connection.");
             Console.WriteLine("---------------------------------");
