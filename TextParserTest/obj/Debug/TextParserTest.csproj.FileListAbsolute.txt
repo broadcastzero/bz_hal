@@ -1,9 +1,0 @@
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TextParserTest\bin\Debug\TextParserTest.dll
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TextParserTest\bin\Debug\TextParserTest.pdb
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TextParserTest\bin\Debug\nunit.framework.dll
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TextParserTest\bin\Debug\Server.exe
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TextParserTest\bin\Debug\Server.pdb
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TextParserTest\bin\Debug\nunit.framework.xml
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TextParserTest\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TextParserTest\obj\Debug\TextParserTest.dll
-C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TextParserTest\obj\Debug\TextParserTest.pdb
