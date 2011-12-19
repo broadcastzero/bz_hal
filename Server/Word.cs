@@ -13,7 +13,7 @@ namespace Server
         private char _Type;
 
         /* PUBLIC VARS */        
-        public char Type_ 
+        public char Type 
         {
             get { return _Type; }
             set 

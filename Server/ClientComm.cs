@@ -51,7 +51,7 @@ namespace Server
                     //send string to text parser
                     if (stringline != null)
                     {
-                        Tp_.SplitSentence(stringline);
+                        //Tp_.SplitSentence(stringline);
                         //output
                         Console.WriteLine(stringline);
                     }

@@ -13,21 +13,28 @@ namespace Server
     {
         /* PRIVATE VARS */
         /* PUBLIC VARS */
-        public string ClientSentence_ { get; set; }
-        public List<Word> Analysedword_ { get; set; }
+        public string ClientSentence { get; set; }
+        public List<Word> AnalysedWord { get; set; }
 
         public void SplitSentence(string cs)
         {
             //pass sentence
-            ClientSentence_ = cs;
-
+            ClientSentence = cs;
+            AnalysedWord = new List<Word>();
             //split sentence into words and save it into list
-            //while (true)
-            //{
-                //Word nword = new Word();
-                //this.Analysedword.Add(nword);
-            //}
-            //save type info (N...noun, V...Verb, A...adjective, R...article, P...preposition)
+            while (true)
+            {
+                Word nword = new Word();
+                nword.Type = this.GetType(nword);
+                AnalysedWord.Add(nword);
+            }
         }
+
+        private char GetType(Word w)
+        {
+            return 'X';
+        }
+
+        //save type info (N...noun, V...Verb, A...adjective, R...article, P...preposition)
     }
 }
