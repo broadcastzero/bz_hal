@@ -11,7 +11,7 @@ namespace Client
 {
     public class Client
     {
-        /* FIELDS */
+        /* PRIVATE VARS */
         private TcpClient tcpcli;
         private NetworkStream stream;
         private StreamWriter sw;
