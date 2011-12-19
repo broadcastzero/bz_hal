@@ -20,11 +20,14 @@ namespace Server
         {
             //pass sentence
             ClientSentence = cs;
+            //split sentence
+            char[] seps = { ' ', '.' };
+            string[] words = cs.Split(seps);
             AnalysedWord = new List<Word>();
-            //split sentence into words and save it into list
-            while (true)
+            //create word-instance for each word and save it into list
+           foreach(string w in words)
             {
-                Word nword = new Word();
+                Word nword = new Word(w);
                 nword.Type = this.GetType(nword);
                 AnalysedWord.Add(nword);
             }

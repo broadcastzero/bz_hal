@@ -1,6 +1,6 @@
 ﻿/* NS: Server */
 /* FN: Word.cs */
-/* FUNCTION: Single word of sentence, calculate type */
+/* FUNCTION: Single word of a sentence, value and type are stored */
 
 using System;
 
@@ -12,7 +12,8 @@ namespace Server
         // possible: N...Noun, V...Verb, A...Adjective, R...Article, P...Preposition
         private char _Type;
 
-        /* PUBLIC VARS */        
+        /* PUBLIC VARS */
+        public string Value { get; set; }
         public char Type 
         {
             get { return _Type; }
@@ -21,6 +22,12 @@ namespace Server
                 if (value == 'N' || value == 'V' || value == 'A' || value == 'R' || value == 'P')
                 { _Type = value; }
             }
+        }
+
+        /* CONSTRUCTOR */
+        public Word(string w)
+        {
+            Value = w;
         }
     }
 }
