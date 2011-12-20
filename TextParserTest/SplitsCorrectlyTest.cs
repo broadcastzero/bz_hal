@@ -40,13 +40,15 @@ namespace TextParserTest
         [Test]
         public void TypeTest()
         {
-            string s = "Das ist mein Testsatz.";
+            string s = "Ich bin ein Pferd.";
             _Tp.SplitSentence(s);
             foreach (Word w in _Tp.AnalysedWords)
             {
-                Assert.That(w.Type == 'X' || w.Type == 'M' || w.Type == 'N' || w.Type == 'V' || w.Type == 'A' || w.Type == 'R' || w.Type == 'P');
+                Assert.That(w.Type == 'X' || w.Type == 'S' || w.Type == 'M' || w.Type == 'N' || w.Type == 'V' || w.Type == 'A' || w.Type == 'R' || w.Type == 'P');
                 Console.WriteLine(w.Type);
             }
+            Assert.That(_Tp.AnalysedWords[0].Type == 'S');
+            Assert.That(_Tp.AnalysedWords[3].Type == 'N');
         }
 
         /* Test mathematics */

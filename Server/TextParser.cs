@@ -12,7 +12,7 @@ namespace Server
     public class TextParser
     {
         /* PRIVATE VARS */
-        //R - Articles
+        private List<string> _Subject;
         private List<string> _Articles;
         private List<string> _QuestionWords;
 
@@ -23,6 +23,7 @@ namespace Server
         /* CONSTRUCTOR - initialize word lists */
         public TextParser()
         {
+            _Subject = new List<string> { "ich", "du", "er", "sie", "es", "wir", "ihr" };
             _Articles = new List<string> { "der", "die", "das" };
             _QuestionWords = new List<string> { "wo", "wer", "was", "wie", "wann", "wieso", "weshalb", "warum", "wen", "wem", "wessen", "woher", "woran" };
         }
@@ -49,10 +50,12 @@ namespace Server
 
             //create word-instance for each word and save it into list
             AnalysedWords = new List<Word>();
+            int pos = 0;
             foreach(string w in words)
             {
                 Word nword = new Word(w);
-                nword.Type = this.GetType(ref nword, mark);
+                nword.Type = this.GetType(nword, mark);
+                nword.Position = pos++;
                 AnalysedWords.Add(nword);
             }
             //remove newline - add punctuation mark instead
@@ -63,14 +66,26 @@ namespace Server
         }
 
         /* Try to guess type of word and save it in variable "Type" */
-        /* N...noun, V...Verb, A...adjective, R...article, P...preposition, M...Punctuation Mark, Q...Question word */
+        /* S...subject, N...noun, V...Verb, A...adjective, R...article, P...preposition, M...Punctuation Mark, Q...Question word */
         /* Not found - 'X' */
-        private char GetType(ref Word w, char mark)
+        private char GetType(Word w, char mark)
         {
-            if(_QuestionWords.Contains(w.Value.ToLower()) && mark == '?')
+            //will be the case at the last word (is deleted later)
+            if (w.Value.Length == 0)
+            { return 'X'; }
+
+            string firstletter = w.Value[0].ToString();
+
+            if (_Subject.Contains(w.Value.ToLower()))
+            { return 'S'; }
+            else if (w.Value.StartsWith(firstletter.ToUpper()) && w.Position != 0)
+            { return 'N'; }
+            else if (_QuestionWords.Contains(w.Value.ToLower()) && mark == '?')
             { return 'Q'; }
-            else if(_Articles.Contains(w.Value.ToLower()))
-            { return 'R';}
+            else if (_Articles.Contains(w.Value.ToLower()) && mark == '.')
+            { return 'R'; }
+            else if (_Articles.Contains(w.Value.ToLower()) && mark == '?' && w.Position != 0)
+            { return 'R'; }
             else { return 'X'; }
         }
     }
