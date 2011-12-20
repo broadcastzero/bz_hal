@@ -41,20 +41,25 @@ namespace Server
             foreach(string w in words)
             {
                 Word nword = new Word(w);
-                nword.Type = this.GetType(nword);
+                nword.Type = this.GetType(ref nword);
                 AnalysedWords.Add(nword);
             }
-            //add punctuation mark
+            //remove newline - add punctuation mark instead
             Word punct = new Word(_Punctuation.ToString());
             punct.Type = 'M';
-            AnalysedWords[AnalysedWords.Count-1] = punct;
+            AnalysedWords.RemoveAt(AnalysedWords.Count-1);
+            AnalysedWords.Add(punct);
         }
 
-        private char GetType(Word w)
+        /* Try to guess type of word and save it in variable "Type" */
+        /* N...noun, V...Verb, A...adjective, R...article, P...preposition, M...Punctuation Mark */
+        /* Not found - 'X' */
+        private char GetType(ref Word w)
         {
+            
             return 'X';
         }
 
-        //save type info (N...noun, V...Verb, A...adjective, R...article, P...preposition)
+        //save type info 
     }
 }

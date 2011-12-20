@@ -30,7 +30,7 @@ namespace TextParserTest
             Assert.That(_Tp.AnalysedWords[0].Value == "Das");
             Assert.That(_Tp.AnalysedWords[1].Value == "ist");
             Assert.That(_Tp.AnalysedWords[2].Value == "mein");
-            //Assert.That(_Tp.AnalysedWords[3].Value == "Testsatz.");
+            Assert.That(_Tp.AnalysedWords[3].Value == "Testsatz");
             foreach (Word w in _Tp.AnalysedWords)
             { Console.WriteLine(w.Value); }
             Console.WriteLine("--End of sentence--");
@@ -44,7 +44,8 @@ namespace TextParserTest
             _Tp.SplitSentence(s);
             foreach (Word w in _Tp.AnalysedWords)
             {
-                Assert.That(w.Type == 'X');
+                Assert.That(w.Type == 'X' || w.Type == 'M' || w.Type == 'N' || w.Type == 'V' || w.Type == 'A' || w.Type == 'R' || w.Type == 'P');
+                Console.WriteLine(w.Type);
             }
         }
 

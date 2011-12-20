@@ -10,6 +10,7 @@ namespace Server
     {
         /* PRIVATE VARS */
         // possible: N...Noun, V...Verb, A...Adjective, R...Article, P...Preposition, M...Punctuation mark
+        // unknown/not found: X
         private char _Type;
 
         /* PUBLIC VARS */
@@ -19,7 +20,7 @@ namespace Server
             get { return _Type; }
             set 
             {
-                if (value == 'N' || value == 'V' || value == 'A' || value == 'R' || value == 'P')
+                if (value == 'N' || value == 'V' || value == 'A' || value == 'R' || value == 'P' || value =='M')
                 { _Type = value; }
                 else { _Type = 'X'; } //type not found
             }
