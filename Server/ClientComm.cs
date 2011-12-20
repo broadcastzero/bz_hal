@@ -48,6 +48,11 @@ namespace Server
                 try
                 {
                     stringline = Sr.ReadLine();
+
+                    //does client want to quit? -> do not parse text, continue after loop
+                    string raw = stringline.ToLower();
+                    if (raw.Contains("quit")) { break; }
+
                     //send string to text parser
                     if (stringline != null)
                     {
@@ -67,7 +72,7 @@ namespace Server
                     Console.WriteLine(e.Message);
                     break;  //quit
                 }
-            } while (!stringline.Contains("quit"));
+            } while (true);
 
             //Close open connections
             Sr.Close(); //also calls Sock_.Close and Stream_.Close()
