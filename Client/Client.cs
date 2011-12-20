@@ -80,7 +80,8 @@ namespace Client
 
                 //if client wants to quit, skip normal sending process and continue after while
                 //with sending quit-message to server
-                if (sending.Contains("quit"))
+                string raw = sending.ToLower();
+                if (raw.Contains("quit"))
                 { break; }
 
                 //send string to server
