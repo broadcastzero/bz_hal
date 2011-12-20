@@ -54,8 +54,8 @@ namespace Server
             foreach(string w in words)
             {
                 Word nword = new Word(w);
-                nword.Type = this.GetType(nword, mark);
                 nword.Position = pos++;
+                nword.Type = this.GetType(nword, mark);
                 AnalysedWords.Add(nword);
             }
             //remove newline - add punctuation mark instead
@@ -74,11 +74,11 @@ namespace Server
             if (w.Value.Length == 0)
             { return 'X'; }
 
-            string firstletter = w.Value[0].ToString();
+            char firstletter = w.Value[0];
 
             if (_Subject.Contains(w.Value.ToLower()))
             { return 'S'; }
-            else if (w.Value.StartsWith(firstletter.ToUpper()) && w.Position != 0)
+            else if (w.Value[0] == firstletter && w.Position != 0)
             { return 'N'; }
             else if (_QuestionWords.Contains(w.Value.ToLower()) && mark == '?')
             { return 'Q'; }
