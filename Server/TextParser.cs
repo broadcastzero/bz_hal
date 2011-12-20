@@ -21,9 +21,12 @@ namespace Server
         {
             //pass and split sentence
             _ClientSentence = cs;
+            int len = 0;
+            len = _ClientSentence.Length;
+
             //save punctuation mark
-            if (cs[cs.Length - 1] == '.') { _Punctuation = '.'; }
-            else if (cs[cs.Length - 1] == '?') { _Punctuation = '?'; }
+            if (cs.LastIndexOf('.') == len-1) { _Punctuation = '.'; }
+            else if (cs.LastIndexOf('?') == len-1) { _Punctuation = '?'; }
             else 
             { 
                 string errmsg = "Der Satz endet nicht mit einem '.' oder '?' - woher soll ich wissen, was du meinst?";

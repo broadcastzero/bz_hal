@@ -31,7 +31,6 @@ namespace Server
                 //precaches Plugins in constructor, if no plugin could be loaded -> Exception
                 _Pm = new PluginManager(); 
                 _Stream = new NetworkStream(_Sock);
-                _Sr = new StreamReader(_Stream);
             }
             catch (Exception) { throw; }
         }
@@ -47,12 +46,17 @@ namespace Server
             { _Sr.Close(); throw; } //also calls Sock_.Close and Stream_.Close()
 
             //receive from client in loop
-            string stringline = "";
             do
             {
                 try
                 {
-                    stringline = _Sr.ReadLine();
+                    //structure of a StreamReader-message: 1) host, 2) Message
+                    _Sr = new StreamReader(_Stream);
+                    string host = _Sr.ReadLine();
+                    string stringline = _Sr.ReadLine();
+
+                    //quit if client has quit connection
+                    if (stringline == null) { break; } 
 
                     //does client want to quit? -> do not parse text, continue after loop
                     string raw = stringline.ToLower();
