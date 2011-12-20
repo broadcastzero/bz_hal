@@ -90,14 +90,15 @@ namespace Server
 
         /* Send split sentence (List<Words>) to PluginManagerm, receive answer */
         private void SendToPluginManager(List<Word> wordlist)
-        { 
-            
+        {
+            string answer = _Pm.SendListToPlugins(wordlist);
+            this.SendAnswerToClient(answer);
         }
 
         /* Send answer back to client */
         private void SendAnswerToClient(string answ)
-        { 
-            
+        {
+            Console.WriteLine(answ);
         }
     }
 }
