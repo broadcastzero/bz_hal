@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* NS: Server */
+/* FN: InvalidSentenceException.cs */
+/* FUNCTION: Defines a custom exception which is thrown, 
+ * if Server doesn't know how to answer the question/statement. */
+
+using System;
 
 namespace Server
 {
