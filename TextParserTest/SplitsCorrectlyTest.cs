@@ -59,7 +59,7 @@ namespace TextParserTest
             { Console.WriteLine(w.Value); }
         }
 
-        /* Test InvalidSentenceException*/
+        /* Test InvalidSentenceException - will be called if sentence doesn't end with '.' or '?' */
         [Test]
         [ExpectedException("Server.InvalidSentenceException")]
         public void InvalidSentenceExceptionTest()
