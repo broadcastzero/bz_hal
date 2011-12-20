@@ -58,5 +58,14 @@ namespace TextParserTest
             foreach (Word w in _Tp.AnalysedWords)
             { Console.WriteLine(w.Value); }
         }
+
+        /* Test InvalidSentenceException*/
+        [Test]
+        [ExpectedException("Server.InvalidSentenceException")]
+        public void InvalidSentenceExceptionTest()
+        { 
+            string s = "Das ist ein Test";
+            _Tp.SplitSentence(s);
+        }
     }
 }
