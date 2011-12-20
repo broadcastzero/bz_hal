@@ -15,6 +15,7 @@ namespace Server
         private List<string> _Subject;
         private List<string> _Articles;
         private List<string> _QuestionWords;
+        private List<string> _Possessive;
 
         /* PUBLIC VARS */
         public List<Word> AnalysedWords { get; set; }
@@ -74,10 +75,13 @@ namespace Server
             if (w.Value.Length == 0)
             { return 'X'; }
 
+            //save first character and then make everything lowercase
             char firstletter = w.Value[0];
+            w.Value = w.Value.ToLower();
 
             if (_Subject.Contains(w.Value.ToLower()))
             { return 'S'; }
+            //if first letter is uppercase -> noun
             else if (w.Value[0] == char.ToUpper(firstletter) && w.Position != 0)
             { return 'N'; }
             else if (_QuestionWords.Contains(w.Value.ToLower()) && mark == '?')

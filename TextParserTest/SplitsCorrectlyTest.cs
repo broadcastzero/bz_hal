@@ -40,7 +40,7 @@ namespace TextParserTest
         [Test]
         public void TypeTest()
         {
-            string s = "Ich bin ein Pferd.";
+            string s = "Mein Hund ist tot.";
             _Tp.SplitSentence(s);
             foreach (Word w in _Tp.AnalysedWords)
             {
