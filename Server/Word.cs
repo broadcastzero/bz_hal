@@ -9,7 +9,7 @@ namespace Server
     public class Word
     {
         /* PRIVATE VARS */
-        // possible: N...Noun, V...Verb, A...Adjective, R...Article, P...Preposition, M...Punctuation mark
+        // possible: N...Noun, V...Verb, A...Adjective, R...Article, P...Preposition, M...Punctuation mark, Q...Question word
         // unknown/not found: X
         private char _Type;
 
@@ -20,7 +20,7 @@ namespace Server
             get { return _Type; }
             set 
             {
-                if (value == 'N' || value == 'V' || value == 'A' || value == 'R' || value == 'P' || value =='M')
+                if (value == 'N' || value == 'V' || value == 'A' || value == 'R' || value == 'P' || value =='M' || value=='Q')
                 { _Type = value; }
                 else { _Type = 'X'; } //type not found
             }
