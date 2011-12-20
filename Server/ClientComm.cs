@@ -76,6 +76,7 @@ namespace Server
                 {
                     Console.WriteLine("---------------------------------");
                     Console.WriteLine(e.Message);
+                    Console.WriteLine(e.StackTrace);
                     break;  //quit
                 }
             } while (true);
