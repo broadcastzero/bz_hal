@@ -12,10 +12,8 @@ namespace Server
     public class TextParser
     {
         /* PRIVATE VARS */
-        private string _ClientSentence;
-        private char _Punctuation;
         //R - Articles
-        public List<string> _Articles;
+        private List<string> _Articles;
 
         /* PUBLIC VARS */
         public List<Word> AnalysedWords { get; set; }
@@ -28,16 +26,16 @@ namespace Server
         }
 
         /* Split sentence and add it to List<Word> AnalysedWords */
-        public void SplitSentence(string cs)
+        public void SplitSentence(string sentence)
         {
             //pass and split sentence
-            _ClientSentence = cs;
+            char mark; //punctuation mark
             int len = 0;
-            len = _ClientSentence.Length;
+            len = sentence.Length;
 
             //save punctuation mark
-            if (cs.LastIndexOf('.') == len-1) { _Punctuation = '.'; }
-            else if (cs.LastIndexOf('?') == len-1) { _Punctuation = '?'; }
+            if (sentence.LastIndexOf('.') == len - 1) { mark = '.'; }
+            else if (sentence.LastIndexOf('?') == len - 1) { mark = '?'; }
             else 
             { 
                 string errmsg = "Der Satz endet nicht mit einem '.' oder '?' - woher soll ich wissen, was du meinst?";
@@ -45,7 +43,7 @@ namespace Server
             }
 
             char[] seps = { ' ', '.', '?' };
-            string[] words = cs.Split(seps);
+            string[] words = sentence.Split(seps);
 
             //create word-instance for each word and save it into list
             AnalysedWords = new List<Word>();
@@ -56,7 +54,7 @@ namespace Server
                 AnalysedWords.Add(nword);
             }
             //remove newline - add punctuation mark instead
-            Word punct = new Word(_Punctuation.ToString());
+            Word punct = new Word(mark.ToString());
             punct.Type = 'M';
             AnalysedWords.RemoveAt(AnalysedWords.Count-1);
             AnalysedWords.Add(punct);
