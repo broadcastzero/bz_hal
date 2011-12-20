@@ -24,7 +24,11 @@ namespace Server
             //save punctuation mark
             if (cs[cs.Length - 1] == '.') { _Punctuation = '.'; }
             else if (cs[cs.Length - 1] == '?') { _Punctuation = '?'; }
-            else { _Punctuation = 'X'; }
+            else 
+            { 
+                string errmsg = "Der Satz endet nicht mit einem '.' oder '?' - woher soll ich wissen, was du meinst?";
+                throw new InvalidSentenceException(errmsg); 
+            }
 
             char[] seps = { ' ', '.', '?' };
             string[] words = cs.Split(seps);

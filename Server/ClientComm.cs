@@ -56,6 +56,11 @@ namespace Server
                         Console.WriteLine(stringline);
                     }
                 }
+                //is thrown, if sentence doesn't end with '.' or '?'
+                catch (InvalidSentenceException e)  
+                {
+                    Console.WriteLine(e.Message);
+                }
                 catch (Exception e)
                 {
                     Console.WriteLine("---------------------------------");
