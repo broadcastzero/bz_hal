@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InvalidSentenceException.cs" />
     <Compile Include="TextParser.cs" />
     <Compile Include="ClientComm.cs" />
     <Compile Include="PluginManager.cs" />
