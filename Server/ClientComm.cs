@@ -6,27 +6,32 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Server
 {
     public class ClientComm
     {
         /* PRIVATE VARS */
+        private TextParser _Tp;
+        private PluginManager _Pm;
+        private Socket _Sock;
+        private NetworkStream _Stream;
+        private StreamReader _Sr;
         /* PUBLIC VARS */
-        public Socket Sock { get; set; }
-        public NetworkStream Stream { get; set; }
-        public StreamReader Sr { get; set; }
-        public TextParser Tp { get; set; }
 
         /* CONSTRUCTOR */
         public ClientComm(Socket sock)
         {
-            Sock = sock;
-            Tp = new TextParser();
+            _Sock = sock;
+            _Tp = new TextParser(); //has no constructor
+
             try
             {
-                Stream = new NetworkStream(Sock);
-                Sr = new StreamReader(Stream);
+                //precaches Plugins in constructor, if no plugin could be loaded -> Exception
+                _Pm = new PluginManager(); 
+                _Stream = new NetworkStream(_Sock);
+                _Sr = new StreamReader(_Stream);
             }
             catch (Exception) { throw; }
         }
@@ -36,10 +41,10 @@ namespace Server
         {
             try
             {
-                Console.WriteLine("A client connected from {0}", Sock.RemoteEndPoint);
+                Console.WriteLine("A client connected from {0}", _Sock.RemoteEndPoint);
             }
             catch (Exception)
-            { Sr.Close(); throw; }
+            { _Sr.Close(); throw; } //also calls Sock_.Close and Stream_.Close()
 
             //receive from client in loop
             string stringline = "";
@@ -47,7 +52,7 @@ namespace Server
             {
                 try
                 {
-                    stringline = Sr.ReadLine();
+                    stringline = _Sr.ReadLine();
 
                     //does client want to quit? -> do not parse text, continue after loop
                     string raw = stringline.ToLower();
@@ -56,9 +61,10 @@ namespace Server
                     //send string to text parser
                     if (stringline != null)
                     {
-                        //Tp_.SplitSentence(stringline);
+                        _Tp.SplitSentence(stringline);
                         //output
                         Console.WriteLine(stringline);
+                        this.SendToPluginManager(_Tp.AnalysedWords);
                     }
                 }
                 //is thrown, if sentence doesn't end with '.' or '?'
@@ -75,11 +81,23 @@ namespace Server
             } while (true);
 
             //Close open connections
-            Sr.Close(); //also calls Sock_.Close and Stream_.Close()
+            _Sr.Close(); //also calls Sock_.Close and Stream_.Close()
             Console.WriteLine("---------------------------------");
             Console.WriteLine("A client has quit the connection.");
             Console.WriteLine("---------------------------------");
             //Thread will quit now
+        }
+
+        /* Send split sentence (List<Words>) to PluginManagerm, receive answer */
+        private void SendToPluginManager(List<Word> wordlist)
+        { 
+            
+        }
+
+        /* Send answer back to client */
+        private void SendAnswerToClient(string answ)
+        { 
+            
         }
     }
 }
