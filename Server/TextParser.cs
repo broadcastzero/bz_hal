@@ -78,7 +78,7 @@ namespace Server
 
             if (_Subject.Contains(w.Value.ToLower()))
             { return 'S'; }
-            else if (w.Value[0] == firstletter && w.Position != 0)
+            else if (w.Value[0] == char.ToUpper(firstletter) && w.Position != 0)
             { return 'N'; }
             else if (_QuestionWords.Contains(w.Value.ToLower()) && mark == '?')
             { return 'Q'; }
