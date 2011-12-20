@@ -68,7 +68,7 @@ namespace Server
                         _Tp.SplitSentence(stringline);
                         //output
                         Console.WriteLine(stringline);
-                        this.SendToPluginManager(_Tp.AnalysedWords);
+                        this.SendToPluginManager(host, _Tp.AnalysedWords);
                     }
                 }
                 //is thrown, if sentence doesn't end with '.' or '?'
@@ -94,16 +94,19 @@ namespace Server
         }
 
         /* Send split sentence (List<Words>) to PluginManagerm, receive answer */
-        private void SendToPluginManager(List<Word> wordlist)
+        private void SendToPluginManager(string host, List<Word> wordlist)
         {
             string answer = _Pm.SendListToPlugins(wordlist);
-            this.SendAnswerToClient(answer);
+            this.SendAnswerToClient(host, answer);
         }
 
         /* Send answer back to client */
-        private void SendAnswerToClient(string answ)
+        private void SendAnswerToClient(string host, string answ)
         {
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine(host);
             Console.WriteLine(answ);
+            Console.WriteLine("---------------------------------");
         }
     }
 }
