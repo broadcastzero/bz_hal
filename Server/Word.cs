@@ -9,7 +9,7 @@ namespace Server
     public class Word
     {
         /* PRIVATE VARS */
-        // possible: N...Noun, V...Verb, A...Adjective, R...Article, P...Preposition
+        // possible: N...Noun, V...Verb, A...Adjective, R...Article, P...Preposition, M...Punctuation mark
         private char _Type;
 
         /* PUBLIC VARS */

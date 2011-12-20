@@ -13,6 +13,7 @@ namespace Server
     {
         /* PRIVATE VARS */
         private string _ClientSentence;
+        private char _Punctuation;
         /* PUBLIC VARS */
         public List<Word> AnalysedWords { get; set; }
 
@@ -20,7 +21,12 @@ namespace Server
         {
             //pass and split sentence
             _ClientSentence = cs;
-            char[] seps = { ' ', '.' };
+            //save punctuation mark
+            if (cs[cs.Length - 1] == '.') { _Punctuation = '.'; }
+            else if (cs[cs.Length - 1] == '?') { _Punctuation = '?'; }
+            else { _Punctuation = 'X'; }
+
+            char[] seps = { ' ', '.', '?' };
             string[] words = cs.Split(seps);
 
             //create word-instance for each word and save it into list
@@ -31,8 +37,10 @@ namespace Server
                 nword.Type = this.GetType(nword);
                 AnalysedWords.Add(nword);
             }
-            //remove newline
-            AnalysedWords.RemoveAt(AnalysedWords.Count-1);
+            //add punctuation mark
+            Word punct = new Word(_Punctuation.ToString());
+            punct.Type = 'M';
+            AnalysedWords[AnalysedWords.Count-1] = punct;
         }
 
         private char GetType(Word w)
