@@ -14,9 +14,20 @@ namespace Server
         /* PRIVATE VARS */
         private string _ClientSentence;
         private char _Punctuation;
+        //R - Articles
+        public List<string> _Articles;
+
         /* PUBLIC VARS */
         public List<Word> AnalysedWords { get; set; }
 
+        /* METHODS */
+        /* CONSTRUCTOR - initialize word lists */
+        public TextParser()
+        {
+            _Articles = new List<string> { "der", "die", "das" };
+        }
+
+        /* Split sentence and add it to List<Word> AnalysedWords */
         public void SplitSentence(string cs)
         {
             //pass and split sentence
@@ -56,7 +67,6 @@ namespace Server
         /* Not found - 'X' */
         private char GetType(ref Word w)
         {
-            
             return 'X';
         }
 

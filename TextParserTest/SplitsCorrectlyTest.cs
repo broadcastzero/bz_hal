@@ -47,6 +47,8 @@ namespace TextParserTest
                 Assert.That(w.Type == 'X' || w.Type == 'M' || w.Type == 'N' || w.Type == 'V' || w.Type == 'A' || w.Type == 'R' || w.Type == 'P');
                 Console.WriteLine(w.Type);
             }
+
+            Assert.That(_Tp._Articles.Contains("der"));
         }
 
         /* Test mathematics */
