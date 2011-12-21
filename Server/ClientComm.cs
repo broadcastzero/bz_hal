@@ -63,7 +63,7 @@ namespace Server
                     string stringline = _Sr.ReadLine();
 
                     //quit if client has quit connection
-                    if (stringline == null) { break; } 
+                    if (stringline == null) { break; }
 
                     //does client want to quit? -> do not parse text, continue after loop
                     string raw = stringline.ToLower();
@@ -79,9 +79,16 @@ namespace Server
                     }
                 }
                 //is thrown, if sentence doesn't end with '.' or '?'
-                catch (InvalidSentenceException e)  
+                catch (InvalidSentenceException e)
                 {
                     Console.WriteLine(e.Message);
+                }
+                catch (IOException)
+                { 
+                    //client has quit, so quit too
+                    Console.WriteLine("---------------------------------");
+                    Console.WriteLine("IOException");
+                    break;
                 }
                 catch (Exception e)
                 {
