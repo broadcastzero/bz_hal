@@ -32,11 +32,6 @@ namespace PluginManagerTest
             _Pm = new PluginManager();
             Assert.That(PluginManager.PluginList != null);
             Assert.That(Directory.Exists(path));
-            //print out plugins
-            foreach (string pm in PluginManager.PluginList)
-            {
-                Console.WriteLine(pm);
-            }
         }
     }
 }

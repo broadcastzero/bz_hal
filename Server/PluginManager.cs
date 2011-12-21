@@ -28,12 +28,11 @@ namespace Server
                 throw new FileNotFoundException("Das Plugin-Verzeichnis konnte nicht geoeffnet werden!");
             }
 
-            //if static list already exists, there is no work to be done
-            if (PluginList != null)
+            //if static list does not exist, create new instance
+            if (PluginList == null)
             {
-                return;
+                PluginList = new List<string>();
             }
-            PluginList = new List<string>();
 
             /* read folder */
             try
