@@ -1,5 +1,8 @@
 ﻿<NUnitProject>
   <Settings activeconfig="Debug" />
-  <Config name="Debug" binpathtype="Auto" />
+  <Config name="Debug" binpathtype="Auto">
+    <assembly path="PluginManagerTest\bin\Debug\PluginManagerTest.dll" />
+    <assembly path="TextParserTest\bin\Debug\TextParserTest.dll" />
+  </Config>
   <Config name="Release" binpathtype="Auto" />
 </NUnitProject>
