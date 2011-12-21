@@ -28,11 +28,15 @@ namespace PluginManagerTest
             } while (parts[i] != "bz_hal");
             path += "bz_hal\\Server\\bin\\Debug\\Plugins\\";
             Console.WriteLine(path);
-            Console.WriteLine(_PluginPath);
 
             _Pm = new PluginManager();
             Assert.That(PluginManager.PluginList != null);
-           Assert.That(Directory.Exists(path));
+            Assert.That(Directory.Exists(path));
+            //print out plugins
+            foreach (string pm in PluginManager.PluginList)
+            {
+                Console.WriteLine(pm);
+            }
         }
     }
 }

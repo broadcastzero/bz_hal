@@ -27,14 +27,25 @@ namespace Server
             {
                 throw new FileNotFoundException("Das Plugin-Verzeichnis konnte nicht geoeffnet werden!");
             }
-            Console.WriteLine(_PlugPath);
-            //if list already exists, there is no work to be done
+
+            //if static list already exists, there is no work to be done
             if (PluginList != null)
             {
                 return;
             }
             PluginList = new List<string>();
+
             /* read folder */
+            try
+            {
+                string[] files = Directory.GetFiles(_PlugPath);
+                foreach (string f in files)
+                { if(f.EndsWith(".dll"))
+                    { PluginList.Add(f); }
+                }
+            }
+            catch (Exception) 
+            { throw new FileNotFoundException("Die Plugins konnten nicht eingelesen werden!"); }
         }
 
         /* Send wordlist to plugins and return answerstring to ClientComm */
