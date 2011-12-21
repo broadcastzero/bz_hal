@@ -39,10 +39,15 @@ namespace Server
             try
             {
                 string[] files = Directory.GetFiles(_PlugPath);
+                //add to list if it is a .dll-file and doesn't already exist
+                Console.WriteLine("---------------------");
+                Console.WriteLine("Loading Plugins...");
+                Console.WriteLine("---------------------");
                 foreach (string f in files)
-                { if(f.EndsWith(".dll"))
-                    { PluginList.Add(f); }
+                { if(f.EndsWith(".dll") && !PluginList.Contains(f))
+                  { PluginList.Add(f); Console.WriteLine(f + " added."); }
                 }
+                Console.WriteLine("---------------------");
             }
             catch (Exception) 
             { throw new FileNotFoundException("Die Plugins konnten nicht eingelesen werden!"); }
