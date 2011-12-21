@@ -13,14 +13,20 @@ namespace Server
     {
         /* PRIVATE VARS */
         private string _PlugPath;
-        private static List<string> _PluginList; //pluginlist has only to be created 1 time
+        /* PUBLIC VARS */
+        public static List<string> PluginList = null; //pluginlist has only to be created 1 time
 
         /* CONSTRUCTOR - precache plugings, throw exception if no plugins could be loaded */
         public PluginManager()
         {
             _PlugPath = Environment.CurrentDirectory + "\\Plugins";
             Console.WriteLine(_PlugPath);
-            _PluginList = new List<string>();
+            //if list already exists, there is no work to be done
+            if (PluginList != null)
+            {
+                return;
+            }
+            PluginList = new List<string>();
             /* read folder */
         }
 

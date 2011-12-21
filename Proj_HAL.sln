@@ -5,13 +5,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{20690468-0083-4437-B147-1B5B8444028F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextParserTest", "TextParserTest\TextParserTest.csproj", "{97956759-3D2E-44DA-A34A-7C69043DDB0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextParserTest", "TestsNunit\TextParserTest\TextParserTest.csproj", "{97956759-3D2E-44DA-A34A-7C69043DDB0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginNav", "PluginNav\PluginNav.csproj", "{97A35694-80EB-4BEB-A48F-7F67890ACA72}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginMath", "PluginMath\PluginMath.csproj", "{4D142171-9719-446F-ABEF-58F90FC746A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginPsych", "PluginPsych\PluginPsych.csproj", "{83C9ABBE-51BA-43AB-A9D3-55192FCA68E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginManagerTest", "TestsNunit\PluginManagerTest\PluginManagerTest.csproj", "{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,16 @@ Global
 		{83C9ABBE-51BA-43AB-A9D3-55192FCA68E0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{83C9ABBE-51BA-43AB-A9D3-55192FCA68E0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{83C9ABBE-51BA-43AB-A9D3-55192FCA68E0}.Release|x86.ActiveCfg = Release|Any CPU
+		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
