@@ -23,24 +23,25 @@ namespace Server
         /* Constructor */
         public Server()
         {
-            _PluginLocation = Environment.CurrentDirectory += "\\Plugins";
-            if(!Directory.Exists(_PluginLocation))
+            //create folder "Plugins" if it doesn't already exists
+            _PluginLocation=Environment.CurrentDirectory;
+            _PluginLocation += "\\Plugins\\";
+            if (!Directory.Exists(_PluginLocation))
             {
                 try
                 {
-                    Directory.CreateDirectory("Plugins");
+                    Directory.CreateDirectory(_PluginLocation);
                 }
                 catch (Exception e)
-                { 
+                {
                     Console.WriteLine(e.Message + "- Plugin-Folder could not be created");
                     Console.ReadLine();
                     Environment.Exit(1);
                 }
             }
+
             try
             {
-                //create folder "Plugins"
-
                 //create listener - second param = port
                 TcpListener = new TcpListener(IPAddress.Any, 8080);
             }
