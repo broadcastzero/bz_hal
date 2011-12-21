@@ -28,15 +28,19 @@ namespace Server
 
             try
             {
+                _Stream = new NetworkStream(_Sock);
                 //precaches Plugins in constructor, if no plugin could be loaded -> Exception
                 _Pm = new PluginManager();
-                _Stream = new NetworkStream(_Sock);
             }
             //PluginIns could not be loaded - quit!
             catch (FileNotFoundException e)
             {
                 Console.WriteLine(e.Message);
-                _Stream.Close();
+                if (_Stream != null)
+                { _Stream.Close(); }
+                Console.WriteLine("Will quit now...");
+                Console.WriteLine("---------------------");
+                Console.ReadLine();
                 Environment.Exit(1);
             }
             catch (Exception) { throw; }

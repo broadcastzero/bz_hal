@@ -20,21 +20,21 @@ namespace Server
         /* CONSTRUCTOR - precache plugings, throw exception if no plugins could be loaded */
         public PluginManager()
         {
-            //work now with absolute path (because Nunit test would throw exception when using CurrentDir
-            //maybe change to Environment.CurrentDirectory later!
+            // work now with absolute path (because Nunit test would throw exception when using CurrentDir
+            // maybe change to Environment.CurrentDirectory later!
             _PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\GPR3\\bz_hal\\Server\\bin\\Debug\\Plugins\\";
             if (!Directory.Exists(_PlugPath))
             {
                 throw new FileNotFoundException("Das Plugin-Verzeichnis konnte nicht geoeffnet werden!");
             }
 
-            //if static list does not exist, create new instance
+            // if static list does not exist, create new instance
             if (PluginList == null)
             {
                 PluginList = new List<string>();
             }
 
-            /* read folder */
+            // read folder
             try
             {
                 string[] files = Directory.GetFiles(_PlugPath);
@@ -50,6 +50,10 @@ namespace Server
             }
             catch (Exception) 
             { throw new FileNotFoundException("Die Plugins konnten nicht eingelesen werden!"); }
+
+            // if List does not contain any plugins, quit
+            if (PluginList.Count == 0)
+            { throw new FileNotFoundException("Kein Plugin gefunden!"); }
         }
 
         /* Send wordlist to plugins and return answerstring to ClientComm */
