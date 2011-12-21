@@ -25,6 +25,7 @@ namespace Server
             {
                 Console.WriteLine("Error -" + e.Message);
                 Console.WriteLine(e.StackTrace);
+                Console.ReadLine();
                 Environment.Exit(1);
             }
 

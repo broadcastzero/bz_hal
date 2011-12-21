@@ -33,6 +33,7 @@ namespace Server
                 catch (Exception e)
                 { 
                     Console.WriteLine(e.Message + "- Plugin-Folder could not be created");
+                    Console.ReadLine();
                     Environment.Exit(1);
                 }
             }
