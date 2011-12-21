@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Server
 {
@@ -19,7 +20,11 @@ namespace Server
         /* CONSTRUCTOR - precache plugings, throw exception if no plugins could be loaded */
         public PluginManager()
         {
-            _PlugPath = Environment.CurrentDirectory + "\\Plugins";
+            _PlugPath = Environment.CurrentDirectory += "\\Plugins";
+            if (!Directory.Exists(_PlugPath))
+            {
+                throw new FileNotFoundException("Das Plugin-Verzeichnis konnte nicht geoeffnet werden!");
+            }
             Console.WriteLine(_PlugPath);
             //if list already exists, there is no work to be done
             if (PluginList != null)

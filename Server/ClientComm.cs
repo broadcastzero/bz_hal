@@ -29,8 +29,15 @@ namespace Server
             try
             {
                 //precaches Plugins in constructor, if no plugin could be loaded -> Exception
-                _Pm = new PluginManager(); 
+                _Pm = new PluginManager();
                 _Stream = new NetworkStream(_Sock);
+            }
+            //PluginIns could not be loaded - quit!
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+                _Stream.Close();
+                Environment.Exit(1);
             }
             catch (Exception) { throw; }
         }
@@ -43,7 +50,7 @@ namespace Server
                 Console.WriteLine("A client connected from {0}", _Sock.RemoteEndPoint);
             }
             catch (Exception)
-            { _Sr.Close(); throw; } //also calls Sock_.Close and Stream_.Close()
+            { _Stream.Close(); throw; } //also calls Sock_.Close and Stream_.Close()
 
             //receive from client in loop
             do
