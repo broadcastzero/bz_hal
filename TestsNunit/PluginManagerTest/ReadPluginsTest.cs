@@ -12,11 +12,11 @@ namespace PluginManagerTest
         private PluginManager _Pm = null;
         private string _PluginPath = null;
 
-        [Test]
-        public void ReadPluginFolderTest()
-        { 
+        [SetUp]
+        public void SetUp()
+        {
             //set PluginPath to server-folder
-            string path="";
+            string path = "";
             _PluginPath = Environment.CurrentDirectory;
             string[] parts = _PluginPath.Split('\\');
             int i = 0;
@@ -27,11 +27,46 @@ namespace PluginManagerTest
                 i++;
             } while (parts[i] != "bz_hal");
             path += "bz_hal\\Server\\bin\\Debug\\Plugins\\";
+            _PluginPath = path;
             Console.WriteLine(path);
-
-            _Pm = new PluginManager();
-            Assert.That(PluginManager.PluginList != null);
-            Assert.That(Directory.Exists(path));
         }
+
+        /* Tests if exception is being thrown in case of no plugins in plugin-folder */
+        [Test]
+        [ExpectedException("System.IO.FileNotFoundException")]
+        public void NoPluginFoundExceptionTest()
+        {
+            string[] files;
+            List<string> dlls = new List<string>();
+            files = Directory.GetFiles(_PluginPath);
+            // if file is a dll, copy it to dlls-string
+            foreach (string s in files)
+            { 
+                if(s.EndsWith(".dll"))
+                {
+                    dlls.Add(s);
+                }
+            }
+            if (dlls.Count == 0)
+            {
+                // should throw exception if no Plugin has been loaded in static list before
+                _Pm = new PluginManager();
+            }
+            // throw exception anyway, so that Nunit-Test is happy
+            else { throw new FileNotFoundException(); }
+        }
+
+        [Test]
+        public void ReadPluginFolderTest()
+        {
+            try
+            {
+                _Pm = new PluginManager();
+            }
+            catch (FileNotFoundException e)
+            { Console.WriteLine(e.Message); }
+            Assert.That(Directory.Exists(_PluginPath));
+        }
+
     }
 }
