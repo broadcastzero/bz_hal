@@ -77,9 +77,11 @@ namespace Server
 
             //save first character and then make everything lowercase
             char firstletter = w.Value[0];
-            w.Value = w.Value.ToLower();
 
             if (_Subject.Contains(w.Value.ToLower()))
+            { return 'S'; }
+            //if first letter is uppercase and word is at position 1 -> Subject!
+            else if (w.Value[0] == char.ToUpper(firstletter) && w.Position == 1)
             { return 'S'; }
             //if first letter is uppercase -> noun
             else if (w.Value[0] == char.ToUpper(firstletter) && w.Position != 0)

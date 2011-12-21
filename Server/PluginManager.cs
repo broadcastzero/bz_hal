@@ -20,6 +20,8 @@ namespace Server
         /* Send wordlist to plugins and return answerstring to ClientComm */
         public string SendListToPlugins(List<Word> wlist)
         {
+            foreach (Word w in wlist)
+            { Console.WriteLine(w.Value + "-" + w.Type + "-" + w.Position); }
             string answer = "Hier koennte Ihre Antwort stehen.";
             return answer;
         }
