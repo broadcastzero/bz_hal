@@ -11,10 +11,17 @@ namespace Server
 {
     public class PluginManager
     {
+        /* PRIVATE VARS */
+        private string _PlugPath;
+        private static List<string> _PluginList; //pluginlist has only to be created 1 time
+
         /* CONSTRUCTOR - precache plugings, throw exception if no plugins could be loaded */
         public PluginManager()
-        { 
-
+        {
+            _PlugPath = Environment.CurrentDirectory + "\\Plugins";
+            Console.WriteLine(_PlugPath);
+            _PluginList = new List<string>();
+            /* read folder */
         }
 
         /* Send wordlist to plugins and return answerstring to ClientComm */
