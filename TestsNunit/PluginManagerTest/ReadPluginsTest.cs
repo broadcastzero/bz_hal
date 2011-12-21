@@ -14,7 +14,6 @@ namespace PluginManagerTest
         public void ReadPluginFolderTest()
         { 
             _Pm = new PluginManager();
-            Console.WriteLine(_Pm._PlugPath);
             Assert.That(PluginManager.PluginList != null);
         }
     }
