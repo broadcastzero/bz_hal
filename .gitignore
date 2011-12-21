@@ -2,11 +2,13 @@ Server/obj/
 Server/bin/
 Client/obj/
 Client/bin/
-TextParserTest/obj/
-TextParsertest/bin/
 PluginMath/obj/
 PluginMath/bin/
 PluginNav/obj/
 PluginNav/bin/
 PluginPsych/obj/
 PluginPsych/bin/
+TestsNunit/TextParserTest/obj/
+TestsNunit/TextParsertest/bin/
+TestsNunit/PluginManagerTest/obj/
+TestsNunit/PluginManagerTest/bin/
