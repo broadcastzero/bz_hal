@@ -5,6 +5,7 @@
 using System;
 using NUnit.Framework;
 using Server;
+using Interface;
 
 namespace TextParserTest
 {

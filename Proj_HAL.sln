@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginPsych", "PluginPsych\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginManagerTest", "TestsNunit\PluginManagerTest\PluginManagerTest.csproj", "{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{B255D99B-8064-45C8-80A7-23DA540ADFA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,16 @@ Global
 		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7384E8F1-BED4-4F1D-A882-B9CEA4475C25}.Release|x86.ActiveCfg = Release|Any CPU
+		{B255D99B-8064-45C8-80A7-23DA540ADFA2}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B255D99B-8064-45C8-80A7-23DA540ADFA2}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B255D99B-8064-45C8-80A7-23DA540ADFA2}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B255D99B-8064-45C8-80A7-23DA540ADFA2}.Debug|x86.ActiveCfg = Debug|x86
+		{B255D99B-8064-45C8-80A7-23DA540ADFA2}.Debug|x86.Build.0 = Debug|x86
+		{B255D99B-8064-45C8-80A7-23DA540ADFA2}.Release|Any CPU.ActiveCfg = Release|x86
+		{B255D99B-8064-45C8-80A7-23DA540ADFA2}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B255D99B-8064-45C8-80A7-23DA540ADFA2}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B255D99B-8064-45C8-80A7-23DA540ADFA2}.Release|x86.ActiveCfg = Release|x86
+		{B255D99B-8064-45C8-80A7-23DA540ADFA2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
