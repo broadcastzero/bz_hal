@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Interface;
+using System.Reflection;
+using System.Threading;
 
 namespace Server
 {
@@ -15,8 +17,12 @@ namespace Server
     {
         /* PRIVATE VARS */
         private string _PlugPath;
+        private string _InterfaceName;
+
         /* PUBLIC VARS */
         public static List<string> PluginList = null; //pluginlist has only to be created 1 time
+        // in here, loaded Plugins will be stored
+        public Dictionary<string, object> InterfaceInstances;
 
         /* CONSTRUCTOR - precache plugings, throw exception if no plugins could be loaded */
         public PluginManager()
@@ -24,6 +30,8 @@ namespace Server
             // work now with absolute path (because Nunit test would throw exception when using CurrentDir
             // maybe change to Environment.CurrentDirectory later!
             _PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\GPR3\\bz_hal\\Server\\bin\\Debug\\Plugins\\";
+            _InterfaceName = "IPlugin";
+            InterfaceInstances = new Dictionary<string, object>();
         }
 
         public void LoadPlugins()
@@ -60,6 +68,56 @@ namespace Server
             // if List does not contain any plugins, quit
             if (PluginList.Count == 0)
             { throw new FileNotFoundException("Kein Plugin gefunden!"); }
+
+            // else - load Plugins dynamically (jump to DynLoad method)
+            this.DynLoad();
+
+            // if Directory of loaded Plugins is empty - throw exception
+            if (InterfaceInstances.Count == 0)
+            { throw new FileNotFoundException("Keines der " + PluginList.Count + "Plugin(s) konnte erfolgreich eingelesen werden!"); }
+        }
+
+        /* Loads plugins which are stored in PluginList as string (path) dynamically */
+        private void DynLoad()
+        {
+            // this part has to be protected from other threads
+            // for our PluginList must not change while iterating!
+            lock (PluginList)
+            {
+                // load all plugins which are stored as pathstring in PluginList
+                foreach (string plug in PluginList)
+                {
+                    Assembly assembly = Assembly.LoadFrom(plug);
+
+                    //check assembly attributes
+                    foreach (Type type in assembly.GetTypes())
+                    {
+                        // only use public and not abstract types
+                        if (type.IsPublic && !type.IsAbstract)
+                        {
+                            // Search for Interface by using name of our Interface 
+                            Type typeInterface = type.GetInterface(_InterfaceName, true);
+
+                            //if there is a class which implements IPlugin
+                            if (typeInterface != null)
+                            {
+                                try
+                                {
+                                    object activedInstance = Activator.CreateInstance(type);
+                                    if (activedInstance != null)
+                                    {
+                                        InterfaceInstances.Add(type.Name, activedInstance);
+                                    }
+                                }
+                                catch (Exception)
+                                {
+                                    Console.WriteLine("Plugin " + plug + " could not be loaded");
+                                }
+                            }
+                        }
+                    }
+                }
+            } //end of lock
         }
 
         /* Send wordlist to plugins and return answerstring to ClientComm */
