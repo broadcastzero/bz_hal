@@ -30,11 +30,11 @@ namespace Server
             try
             {
                 _Stream = new NetworkStream(_Sock);
-                //precaches Plugins in constructor, if no plugin could be loaded -> Exception
+                // precaches Plugins in constructor, if no plugin could be loaded -> Exception
                 _Pm = new PluginManager();
                 _Pm.LoadPlugins();
             }
-            //PluginIns could not be loaded - quit!
+            // PluginIns could not be loaded - quit!
             catch (FileNotFoundException e)
             {
                 Console.WriteLine(e.Message);
@@ -58,24 +58,24 @@ namespace Server
             catch (Exception)
             { _Stream.Close(); throw; } //also calls Sock_.Close and Stream_.Close()
 
-            //receive from client in loop
+            // receive from client in loop
             do
             {
                 try
                 {
-                    //structure of a StreamReader-message: 1) host, 2) Message
+                    // structure of a StreamReader-message: 1) host, 2) Message
                     _Sr = new StreamReader(_Stream);
                     string host = _Sr.ReadLine();
                     string stringline = _Sr.ReadLine();
 
-                    //quit if client has quit connection
+                    // quit if client has quit connection
                     if (stringline == null) { break; }
 
-                    //does client want to quit? -> do not parse text, continue after loop
+                    // does client want to quit? -> do not parse text, continue after loop
                     string raw = stringline.ToLower();
                     if (raw.Contains("quit")) { break; }
 
-                    //send string to text parser
+                    // send string to text parser
                     if (stringline != null)
                     {
                         _Tp.SplitSentence(stringline);
@@ -84,17 +84,23 @@ namespace Server
                         this.SendToPluginManager(host, _Tp.AnalysedWords);
                     }
                 }
-                //is thrown, if sentence doesn't end with '.' or '?'
+                // is thrown, if sentence doesn't end with '.' or '?'
                 catch (InvalidSentenceException e)
                 {
                     Console.WriteLine(e.Message);
                 }
                 catch (IOException)
-                { 
-                    //client has quit, so quit too
+                {
+                    // client has quit, so quit too
                     Console.WriteLine("---------------------------------");
                     Console.WriteLine("IOException");
                     break;
+                }
+                catch (FileNotFoundException e)
+                {
+                    // there are no plugins
+                    Console.WriteLine(e.Message);
+                    break;                
                 }
                 catch (Exception e)
                 {
@@ -105,18 +111,24 @@ namespace Server
                 }
             } while (true);
 
-            //Close open connections
-            _Sr.Close(); //also calls Sock_.Close and Stream_.Close()
+            // Close open connections
+            _Sr.Close(); // also calls Sock_.Close and Stream_.Close()
             Console.WriteLine("---------------------------------");
             Console.WriteLine("A client has quit the connection.");
             Console.WriteLine("---------------------------------");
-            //Thread will quit now
+            // Thread will quit now
         }
 
         /* Send split sentence (List<Words>) to PluginManager, receive answer */
         private void SendToPluginManager(string host, List<Word> wordlist)
         {
-            string answer = _Pm.SendListToPlugins(wordlist);
+            string answer = null;
+            try
+            {
+                answer = _Pm.SendListToPlugins(wordlist);
+            }
+            catch (FileNotFoundException)
+            { throw; }
             this.SendAnswerToClient(host, answer);
         }
 

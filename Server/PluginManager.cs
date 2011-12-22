@@ -115,10 +115,10 @@ namespace Server
                                 }
                                 catch (Exception)
                                 {
-                                    Console.WriteLine("Plugin " + plug + " could not be loaded");
+                                    Console.WriteLine("Plugin " + plug + " konnte nicht geladen werden.");
                                 }
                             }
-                            else { Console.WriteLine("not valid"); }
+                            else { Console.WriteLine("Keine gueltige .dll!"); }
                          }
                     }
                 }
@@ -128,6 +128,18 @@ namespace Server
         /* Send wordlist to plugins and return answerstring to ClientComm */
         public string SendListToPlugins(List<Word> wlist)
         {
+            // are there still plugins?
+            if (this.InterfaceInstances.Count == 0)
+            {
+                throw new FileNotFoundException("Pluginliste ist jetzt leer. Wie kommt das?");
+            }
+
+            // send wordlist to plugins
+            foreach (IPlugin plug in this.InterfaceInstances)
+            {
+                plug.CalculateSentence(wlist);
+            }
+
             foreach (Word w in wlist)
             { Console.WriteLine(w.Value + "-" + w.Type + "-" + w.Position); }
             string answer = "Hier koennte Ihre Antwort stehen.";
