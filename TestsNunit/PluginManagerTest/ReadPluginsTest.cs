@@ -51,6 +51,7 @@ namespace PluginManagerTest
             {
                 // should throw exception if no Plugin has been loaded in static list before
                 _Pm = new PluginManager();
+                _Pm.LoadPlugins();
             }
             // throw exception anyway, so that Nunit-Test is happy
             else { throw new FileNotFoundException(); }
@@ -59,9 +60,10 @@ namespace PluginManagerTest
         [Test]
         public void ReadPluginFolderTest()
         {
+            _Pm = new PluginManager();
             try
             {
-                _Pm = new PluginManager();
+                _Pm.LoadPlugins();
             }
             catch (FileNotFoundException e)
             { Console.WriteLine(e.Message); }

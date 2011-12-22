@@ -23,6 +23,10 @@ namespace Server
             // work now with absolute path (because Nunit test would throw exception when using CurrentDir
             // maybe change to Environment.CurrentDirectory later!
             _PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\GPR3\\bz_hal\\Server\\bin\\Debug\\Plugins\\";
+        }
+
+        public void LoadPlugins()
+        {
             if (!Directory.Exists(_PlugPath))
             {
                 throw new FileNotFoundException("Das Plugin-Verzeichnis konnte nicht geoeffnet werden!");
@@ -43,12 +47,13 @@ namespace Server
                 Console.WriteLine("Loading Plugins...");
                 Console.WriteLine("---------------------");
                 foreach (string f in files)
-                { if(f.EndsWith(".dll") && !PluginList.Contains(f))
-                  { PluginList.Add(f); Console.WriteLine(f + " added."); }
+                {
+                    if (f.EndsWith(".dll") && !PluginList.Contains(f))
+                    { PluginList.Add(f); Console.WriteLine(f + " added."); }
                 }
                 Console.WriteLine("---------------------");
             }
-            catch (Exception) 
+            catch (Exception)
             { throw new FileNotFoundException("Die Plugins konnten nicht eingelesen werden!"); }
 
             // if List does not contain any plugins, quit

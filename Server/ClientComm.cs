@@ -31,6 +31,7 @@ namespace Server
                 _Stream = new NetworkStream(_Sock);
                 //precaches Plugins in constructor, if no plugin could be loaded -> Exception
                 _Pm = new PluginManager();
+                _Pm.LoadPlugins();
             }
             //PluginIns could not be loaded - quit!
             catch (FileNotFoundException e)
