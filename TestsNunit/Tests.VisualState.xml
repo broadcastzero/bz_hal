@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ShowCheckBoxes="false">
   <TopNode>[0-1000]C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\Tests.nunit</TopNode>
-  <SelectedNode>[0-1002]PluginManagerTest.ReadPluginsTest.NoPluginFoundExceptionTest</SelectedNode>
+  <SelectedNode>[0-1003]PluginManagerTest.ReadPluginsTest.ReadPluginFolderTest</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1000]C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\Tests.nunit" Expanded="true" />
