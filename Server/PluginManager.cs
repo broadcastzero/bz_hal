@@ -20,8 +20,8 @@ namespace Server
 
         /* PUBLIC VARS */
         public static List<string> PluginList = null; //pluginlist has only to be created 1 time
-        // in here, loaded Plugins will be stored
-        public Dictionary<string, object> InterfaceInstances;
+        // in here, loaded Plugins will be stored. maybe make static later.
+        private List<IPlugin> InterfaceInstances = null;
 
         /* CONSTRUCTOR - precache plugings, throw exception if no plugins could be loaded */
         public PluginManager()
@@ -29,7 +29,7 @@ namespace Server
             // work now with absolute path (because Nunit test would throw exception when using CurrentDir
             // maybe change to Environment.CurrentDirectory later!
             _PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\SWE\\0 Hauptuebung\\HAL_Solution\\Server\\bin\\Debug\\Plugins\\";
-            InterfaceInstances = new Dictionary<string, object>();
+            InterfaceInstances = new List<IPlugin>;
         }
 
         public void LoadPlugins()
@@ -94,22 +94,22 @@ namespace Server
                         if (type.IsPublic && !type.IsAbstract)
                         {
                             // get all classes which implement IPlugin
-                            Console.WriteLine(typeof(IPlugin).IsAssignableFrom(type));
+                            //Console.WriteLine(typeof(IPlugin).IsAssignableFrom(type));
                             if (type.GetInterface("IPlugin") != null)
                             {
-                                Console.WriteLine("LOADS!");
-                                /*try
+                                try
                                 {
                                     object activedInstance = Activator.CreateInstance(type);
                                     if (activedInstance != null)
                                     {
                                         InterfaceInstances.Add(type.Name, activedInstance);
+                                        Console.WriteLine(type.Name + " fully loaded.");
                                     }
                                 }
                                 catch (Exception)
                                 {
                                     Console.WriteLine("Plugin " + plug + " could not be loaded");
-                                }*/
+                                }
                             }
                             else { Console.WriteLine("not valid"); }
                          }
