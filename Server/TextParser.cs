@@ -41,7 +41,7 @@ namespace Server
             //save punctuation mark
             if (sentence.LastIndexOf('.') == len - 1) { mark = '.'; }
             else if (sentence.LastIndexOf('?') == len - 1) { mark = '?'; }
-            else if (sentence.LastIndexOf('!') == len - 1) { mark = '!'; }
+            else if (sentence.LastIndexOf('!') == len - 1) { mark = '!'; }  
             else
             {
                 string errmsg = "Der Satz endet nicht mit einem '.' oder '?' - woher soll ich wissen, was du meinst?";
@@ -70,23 +70,23 @@ namespace Server
         }
 
         /* Try to guess type of word and save it in variable "Type" */
-        /* S...subject, N...noun, V...Verb, A...adjective, R...article, P...preposition, M...Punctuation Mark, Q...Question word */
+        /* S...subject, N...noun, V...Verb, A...adjective, R...article, P...preposition, M...Punctuation Mark, Q...Question word, C...Math(Calc) */
         /* Not found - 'X' */
         private char GetType(Word w, char mark)
         {
-            //will be the case at the last word (is deleted later)
+            // will be the case at the last word (is deleted later)
             if (w.Value.Length == 0)
             { return 'X'; }
 
-            //save first character and then make everything lowercase
+            // save first character and then make everything lowercase
             char firstletter = w.Value[0];
 
             if (_Subject.Contains(w.Value.ToLower()))
             { return 'S'; }
-            //if first letter is uppercase and word is at position 1 -> Subject!
+            // if first letter is uppercase and word is at position 1 -> Subject!
             else if (w.Value[0] == char.ToUpper(firstletter) && w.Position == 1)
             { return 'S'; }
-            //if first letter is uppercase -> noun
+            // if first letter is uppercase -> noun
             else if (w.Value[0] == char.ToUpper(firstletter) && w.Position != 0)
             { return 'N'; }
             else if (_QuestionWords.Contains(w.Value.ToLower()) && mark == '?')
@@ -95,6 +95,9 @@ namespace Server
             { return 'R'; }
             else if (_Articles.Contains(w.Value.ToLower()) && mark == '?' && w.Position != 0)
             { return 'R'; }
+            // add mathematical symbols
+            else if (w.Value[0] == '+' || w.Value[0] == '-' || w.Value[0] == '*' || w.Value[0] == '/')
+            { return 'C'; }
             else { return 'X'; }
         }
     }

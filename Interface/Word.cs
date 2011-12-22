@@ -10,7 +10,7 @@ namespace Interface
     public class Word
     {
         /* PRIVATE VARS */
-        // possible: S...Subject, N...Noun, V...Verb, A...Adjective, R...Article, P...Preposition, M...Punctuation mark, Q...Question word
+        // possible: S...Subject, N...Noun, V...Verb, A...Adjective, R...Article, P...Preposition, M...Punctuation mark, Q...Question word, C...Math(Calc)
         // unknown/not found: X
         private char _Type;
 
