@@ -12,3 +12,5 @@ TestsNunit/TextParserTest/obj/
 TestsNunit/TextParsertest/bin/
 TestsNunit/PluginManagerTest/obj/
 TestsNunit/PluginManagerTest/bin/
+Interface/obj/
+Interface/bin/
