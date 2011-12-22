@@ -9,7 +9,7 @@ namespace Interface
         /// <summary>
         /// Calculates a sentence depending on the Plugins priorities
         /// </summary>
-        /// <param name="wordlist">Method gets a List of words, therefore the plugin mast implement </param>
+        /// <param name="wordlist">Method gets a List of words, therefore class Word is stored in Interface.</param>
         void CalculateSentence(List<Word> wordlist);
     }
 }
