@@ -10,6 +10,6 @@ namespace Interface
         /// Calculates a sentence depending on the Plugins priorities
         /// </summary>
         /// <param name="wordlist">Method gets a List of words, therefore class Word is stored in Interface.</param>
-        void CalculateSentence(List<Word> wordlist);
+        string CalculateSentence(List<Word> wordlist);
     }
 }
