@@ -28,7 +28,7 @@ namespace Server
         {
             // work now with absolute path (because Nunit test would throw exception when using CurrentDir
             // maybe change to Environment.CurrentDirectory later!
-            _PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\GPR3\\bz_hal\\Server\\bin\\Debug\\Plugins\\";
+            _PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\SWE\\0 Hauptuebung\\HAL_Solution\\Server\\bin\\Debug\\Plugins\\";
             InterfaceInstances = new Dictionary<string, object>();
         }
 
@@ -94,7 +94,7 @@ namespace Server
                         if (type.IsPublic && !type.IsAbstract)
                         {
                             // get all classes which implement IPlugin
-                            //Console.WriteLine(typeof(IPlugin).IsAssignableFrom(type));
+                            Console.WriteLine(typeof(IPlugin).IsAssignableFrom(type));
                             if (type.GetInterface("IPlugin") != null)
                             {
                                 Console.WriteLine("LOADS!");

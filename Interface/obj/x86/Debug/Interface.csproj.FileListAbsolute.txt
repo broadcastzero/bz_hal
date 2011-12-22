@@ -3,3 +3,8 @@ C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\Interface\bin\Debug\Interfac
 C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\Interface\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\Interface\obj\x86\Debug\Interface.dll
 C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\Interface\obj\x86\Debug\Interface.pdb
+C:\Users\broadcastzero\0 FH\3. Semester\SWE\0 Hauptuebung\HAL_Solution\Interface\bin\Debug\Interface.dll
+C:\Users\broadcastzero\0 FH\3. Semester\SWE\0 Hauptuebung\HAL_Solution\Interface\bin\Debug\Interface.pdb
+C:\Users\broadcastzero\0 FH\3. Semester\SWE\0 Hauptuebung\HAL_Solution\Interface\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\broadcastzero\0 FH\3. Semester\SWE\0 Hauptuebung\HAL_Solution\Interface\obj\x86\Debug\Interface.dll
+C:\Users\broadcastzero\0 FH\3. Semester\SWE\0 Hauptuebung\HAL_Solution\Interface\obj\x86\Debug\Interface.pdb

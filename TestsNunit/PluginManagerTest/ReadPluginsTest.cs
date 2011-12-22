@@ -25,8 +25,8 @@ namespace PluginManagerTest
                 path += parts[i];
                 path += "\\";
                 i++;
-            } while (parts[i] != "bz_hal");
-            path += "bz_hal\\Server\\bin\\Debug\\Plugins\\";
+            } while (parts[i] != "HAL_Solution");
+            path += "HAL_Solution\\Server\\bin\\Debug\\Plugins\\";
             _PluginPath = path;
             Console.WriteLine(path);
         }
