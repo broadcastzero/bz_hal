@@ -44,7 +44,7 @@ namespace Server
             else if (sentence.LastIndexOf('!') == len - 1) { mark = '!'; }  
             else
             {
-                string errmsg = "Der Satz endet nicht mit einem '.' oder '?' - woher soll ich wissen, was du meinst?";
+                string errmsg = "Der Satz endet nicht mit einem '.', '!' oder '?' - woher soll ich wissen, was du meinst?";
                 throw new InvalidSentenceException(errmsg);
             }
 
@@ -81,7 +81,10 @@ namespace Server
             // save first character and then make everything lowercase
             char firstletter = w.Value[0];
 
-            if (_Subject.Contains(w.Value.ToLower()))
+            // add mathematical symbols
+            if (firstletter == '+' || firstletter == '-' || firstletter == '*' || firstletter == '/')
+            { return 'C'; }
+            else if (_Subject.Contains(w.Value.ToLower()))
             { return 'S'; }
             // if first letter is uppercase and word is at position 1 -> Subject!
             else if (w.Value[0] == char.ToUpper(firstletter) && w.Position == 1)
@@ -95,9 +98,6 @@ namespace Server
             { return 'R'; }
             else if (_Articles.Contains(w.Value.ToLower()) && mark == '?' && w.Position != 0)
             { return 'R'; }
-            // add mathematical symbols
-            else if (w.Value[0] == '+' || w.Value[0] == '-' || w.Value[0] == '*' || w.Value[0] == '/')
-            { return 'C'; }
             else { return 'X'; }
         }
     }

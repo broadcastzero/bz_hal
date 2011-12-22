@@ -22,7 +22,7 @@ namespace Interface
             get { return _Type; }
             set 
             {
-                if (value == 'S' || value == 'N' || value == 'V' || value == 'A' || value == 'R' || value == 'P' || value =='M' || value=='Q')
+                if (value == 'S' || value == 'N' || value == 'V' || value == 'A' || value == 'R' || value == 'P' || value =='M' || value=='Q' || value=='C')
                 { _Type = value; }
                 else { _Type = 'X'; } //type not found
             }

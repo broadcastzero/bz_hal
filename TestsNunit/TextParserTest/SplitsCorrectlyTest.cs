@@ -60,7 +60,7 @@ namespace TextParserTest
             _Tp.SplitSentence(s);
             Assert.AreEqual(7, _Tp.AnalysedWords.Count);
             foreach (Word w in _Tp.AnalysedWords)
-            { Console.WriteLine(w.Value); }
+            { Console.WriteLine(w.Value + ' ' + w.Type); }
         }
 
         /* Test InvalidSentenceException - will be called if sentence doesn't end with '.' or '?' */

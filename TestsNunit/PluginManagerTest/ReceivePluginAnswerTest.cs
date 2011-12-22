@@ -10,7 +10,6 @@ namespace PluginManagerTest
     public class ReceivePluginAnswerTest
     {
         private PluginManager _Pm = null;
-        private string _PluginPath = null;
         private TextParser _Tp = null;
 
         [SetUp]
