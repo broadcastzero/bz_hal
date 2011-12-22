@@ -147,6 +147,7 @@ namespace Server
             string answer = null;
             int priority = 0;
             IPlugin master = null;
+            // get priority guessing first (0 - 10)
             foreach (IPlugin plug in this.InterfaceInstances)
             {
                 int prior = plug.GetPriority(wlist);

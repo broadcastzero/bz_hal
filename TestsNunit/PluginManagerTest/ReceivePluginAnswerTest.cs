@@ -32,5 +32,20 @@ namespace PluginManagerTest
             Console.WriteLine(answer);
             Console.WriteLine("------------------------------");
         }
+
+        [Test]
+        public void MathTest()
+        {
+            string input = "Wieviel ist 12 * 12?";
+            this._Tp.SplitSentence(input);
+            string answer = null;
+            answer = _Pm.SendListToPlugins(this._Tp.AnalysedWords);
+            Assert.That(answer != null);
+            Console.WriteLine("------------------------------");
+            Console.WriteLine(answer);
+            Console.WriteLine("------------------------------");
+
+            Assert.That(answer == "Da kommt wohl 144 raus!");
+        }
     }
 }
