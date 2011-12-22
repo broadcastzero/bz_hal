@@ -89,18 +89,18 @@ namespace Server
                 {
                     Console.WriteLine(e.Message);
                 }
+                catch (FileNotFoundException e)
+                {
+                    // there are no plugins
+                    Console.WriteLine(e.Message);
+                    break;
+                }
                 catch (IOException)
                 {
                     // client has quit, so quit too
                     Console.WriteLine("---------------------------------");
                     Console.WriteLine("IOException");
                     break;
-                }
-                catch (FileNotFoundException e)
-                {
-                    // there are no plugins
-                    Console.WriteLine(e.Message);
-                    break;                
                 }
                 catch (Exception e)
                 {

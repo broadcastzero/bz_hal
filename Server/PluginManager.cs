@@ -134,15 +134,15 @@ namespace Server
                 throw new FileNotFoundException("Pluginliste ist jetzt leer. Wie kommt das?");
             }
 
-            // send wordlist to plugins
+            // send wordlist to plugins and receive answer
+            string answer = null;
             foreach (IPlugin plug in this.InterfaceInstances)
             {
-                plug.CalculateSentence(wlist);
+                answer = plug.CalculateSentence(wlist);
             }
 
             foreach (Word w in wlist)
             { Console.WriteLine(w.Value + "-" + w.Type + "-" + w.Position); }
-            string answer = "Hier koennte Ihre Antwort stehen.";
             return answer;
         }
     }
