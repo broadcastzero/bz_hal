@@ -29,9 +29,12 @@ namespace Server
             // work now with absolute path (because Nunit test would throw exception when using CurrentDir
             // maybe change to Environment.CurrentDirectory later!
             _PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\SWE\\0 Hauptuebung\\HAL_Solution\\Server\\bin\\Debug\\Plugins\\";
-            InterfaceInstances = new List<IPlugin>;
+            InterfaceInstances = new List<IPlugin>();
         }
 
+        /// <summary>
+        /// Preloads plugins from Plugin folder. Saves them in private IPlugin-List "InterfaceInstances".
+        /// </summary>
         public void LoadPlugins()
         {
             if (!Directory.Exists(_PlugPath))
@@ -73,9 +76,13 @@ namespace Server
             // if Directory of loaded Plugins is empty - throw exception
             if (InterfaceInstances.Count == 0)
             { throw new FileNotFoundException("Keines der " + PluginList.Count + " Plugin(s) konnte erfolgreich eingelesen werden!"); }
+
+            // now that List with loaded plugins exists, send string to each plugin
         }
 
-        /* Loads plugins which are stored in PluginList as string (path) dynamically */
+        /// <summary>
+        /// Loads plugins which are stored in static PluginManager.PluginList as string (path) dynamically.
+        /// </summary> 
         private void DynLoad()
         {
             // this part has to be protected from other threads
@@ -99,10 +106,10 @@ namespace Server
                             {
                                 try
                                 {
-                                    object activedInstance = Activator.CreateInstance(type);
-                                    if (activedInstance != null)
+                                    IPlugin plugin = (IPlugin)Activator.CreateInstance(type);
+                                    if (plugin != null)
                                     {
-                                        InterfaceInstances.Add(type.Name, activedInstance);
+                                        InterfaceInstances.Add((IPlugin)plugin);
                                         Console.WriteLine(type.Name + " fully loaded.");
                                     }
                                 }

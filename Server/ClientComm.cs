@@ -113,7 +113,7 @@ namespace Server
             //Thread will quit now
         }
 
-        /* Send split sentence (List<Words>) to PluginManagerm, receive answer */
+        /* Send split sentence (List<Words>) to PluginManager, receive answer */
         private void SendToPluginManager(string host, List<Word> wordlist)
         {
             string answer = _Pm.SendListToPlugins(wordlist);
