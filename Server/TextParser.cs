@@ -41,10 +41,11 @@ namespace Server
             //save punctuation mark
             if (sentence.LastIndexOf('.') == len - 1) { mark = '.'; }
             else if (sentence.LastIndexOf('?') == len - 1) { mark = '?'; }
-            else 
-            { 
+            else if (sentence.LastIndexOf('!') == len - 1) { mark = '!'; }
+            else
+            {
                 string errmsg = "Der Satz endet nicht mit einem '.' oder '?' - woher soll ich wissen, was du meinst?";
-                throw new InvalidSentenceException(errmsg); 
+                throw new InvalidSentenceException(errmsg);
             }
 
             char[] seps = { ' ', '.', '?' };
