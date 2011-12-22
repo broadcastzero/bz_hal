@@ -64,7 +64,7 @@ namespace Server
             //remove newline - add punctuation mark instead
             Word punct = new Word(mark.ToString());
             punct.Type = 'M';
-            punct.Position = pos;
+            punct.Position = pos-1;
             AnalysedWords.RemoveAt(AnalysedWords.Count-1);
             AnalysedWords.Add(punct);
         }
