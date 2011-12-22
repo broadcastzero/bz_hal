@@ -28,7 +28,9 @@ namespace Server
         {
             // work now with absolute path (because Nunit test would throw exception when using CurrentDir
             // maybe change to Environment.CurrentDirectory later!
-            _PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\SWE\\0 Hauptuebung\\HAL_Solution\\Server\\bin\\Debug\\Plugins\\";
+            //_PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\SWE\\0 Hauptuebung\\HAL_Solution\\Server\\bin\\Debug\\Plugins\\";
+            _PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\GPR3\\bz_hal\\Server\\bin\\Debug\\Plugins\\";
+            Console.WriteLine("Path: " + _PlugPath);
             InterfaceInstances = new List<IPlugin>();
         }
 

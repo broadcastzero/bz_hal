@@ -15,7 +15,7 @@ namespace PluginManagerTest
         [SetUp]
         public void SetUp()
         {
-            //set PluginPath to server-folder
+            /* set PluginPath to server-folder */
             string path = "";
             _PluginPath = Environment.CurrentDirectory;
             string[] parts = _PluginPath.Split('\\');
@@ -25,8 +25,10 @@ namespace PluginManagerTest
                 path += parts[i];
                 path += "\\";
                 i++;
-            } while (parts[i] != "HAL_Solution");
-            path += "HAL_Solution\\Server\\bin\\Debug\\Plugins\\";
+                //} while (parts[i] != "HAL_Solution");
+                //path += "HAL_Solution\\Server\\bin\\Debug\\Plugins\\";
+            } while (parts[i] != "bz_hal");
+            path += "bz_hal\\Server\\bin\\Debug\\Plugins\\";
             _PluginPath = path;
             Console.WriteLine(path);
         }
