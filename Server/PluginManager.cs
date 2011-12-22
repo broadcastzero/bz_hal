@@ -95,10 +95,17 @@ namespace Server
                     Assembly assembly = Assembly.LoadFrom(plug);
 
                     // get all classes of this assembly
-                    foreach (Type type in assembly.GetTypes())
+                    Type[] types = null;
+                    try
+                    {
+                        types = assembly.GetTypes();
+                    }
+                    catch (ReflectionTypeLoadException e)
+                    { Console.WriteLine(e.Message); continue; }
+                    foreach (Type type in types)
                     {
                         // only use public and not abstract types
-                        if (type.IsPublic && !type.IsAbstract)
+                        if (type != null && type.IsPublic && !type.IsAbstract)
                         {
                             // get all classes which implement IPlugin
                             //Console.WriteLine(typeof(IPlugin).IsAssignableFrom(type));
@@ -136,10 +143,16 @@ namespace Server
 
             // send wordlist to plugins and receive answer
             string answer = null;
+            int priority = 0;
+            IPlugin master = null;
             foreach (IPlugin plug in this.InterfaceInstances)
             {
-                answer = plug.CalculateSentence(wlist);
+                int prior = plug.GetPriority(wlist);
+                if (prior > priority) { priority = prior; master = plug; }
             }
+            // if at least one plugin thinks it's responsible, print out the answer of the Plugin with the highest priority
+            if (master != null) { answer = master.CalculateSentence(wlist);  }
+            else { answer = "Dazu sage ich besser nichts."; }
 
             foreach (Word w in wlist)
             { Console.WriteLine(w.Value + "-" + w.Type + "-" + w.Position); }

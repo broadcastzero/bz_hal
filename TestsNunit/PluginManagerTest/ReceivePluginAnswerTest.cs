@@ -28,9 +28,9 @@ namespace PluginManagerTest
             string answer = null;
             answer = _Pm.SendListToPlugins(this._Tp.AnalysedWords);
             Assert.That(answer != null);
-            Console.WriteLine("-------------------------");
+            Console.WriteLine("------------------------------");
             Console.WriteLine(answer);
-            Console.WriteLine("-------------------------");
+            Console.WriteLine("------------------------------");
         }
     }
 }
