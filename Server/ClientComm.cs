@@ -19,6 +19,7 @@ namespace Server
         private Socket _Sock;
         private NetworkStream _Stream;
         private StreamReader _Sr;
+        private StreamWriter _Sw;
         /* PUBLIC VARS */
 
         /* CONSTRUCTOR */
@@ -112,7 +113,12 @@ namespace Server
             } while (true);
 
             // Close open connections
-            _Sr.Close(); // also calls Sock_.Close and Stream_.Close()
+            try
+            {
+                _Sr.Close(); // also calls Sock_.Close and Stream_.Close()
+                _Sw.Close();
+            }
+            catch (Exception e) { Console.WriteLine("Das Objekt " + e.Source + " wurde bereits geschlossen."); }
             Console.WriteLine("---------------------------------");
             Console.WriteLine("A client has quit the connection.");
             Console.WriteLine("---------------------------------");
@@ -129,7 +135,14 @@ namespace Server
             }
             catch (FileNotFoundException) //wrong path - quit!
             { throw; }
-            this.SendAnswerToClient(host, answer);
+            
+            // send received answer back to Client
+            try
+            {
+                this.SendAnswerToClient(host, answer);
+            }
+            catch (Exception) //problem with clientconnection
+            { throw; }
         }
 
         /* Send answer back to client */
@@ -139,6 +152,17 @@ namespace Server
             Console.WriteLine(host);
             Console.WriteLine(answ);
             Console.WriteLine("---------------------------------");
+
+            try
+            {
+                _Sw = new StreamWriter(_Stream);
+                _Sw.WriteLine(answ);
+                _Sw.Flush();
+            }
+            catch (Exception) //connection failed
+            {
+                throw;
+            }
         }
     }
 }

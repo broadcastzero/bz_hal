@@ -12,24 +12,25 @@ namespace Client
     public class Client
     {
         /* PRIVATE VARS */
-        private TcpClient tcpcli;
-        private NetworkStream stream;
-        private StreamWriter sw;
+        private TcpClient _Tcpcli;
+        private NetworkStream _Stream;
+        private StreamWriter _Sw;
+        private StreamReader _Sr;
 
         /* METHODS */
         //connect to server//
         public void Connect()
         {
-            this.tcpcli = new TcpClient();
+            this._Tcpcli = new TcpClient();
             IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8080);
             try
             {
-                tcpcli.Connect(serverEndPoint);
+                _Tcpcli.Connect(serverEndPoint);
             }
             //quit, if connection is refused (Server is down, etc)
             catch (SocketException e)
             {
-                tcpcli.Close();
+                _Tcpcli.Close();
                 Console.WriteLine(e.Message);
                 Console.ReadLine();
                 Environment.Exit(1);
@@ -50,8 +51,8 @@ namespace Client
             {
                 try
                 {
-                    sw.WriteLine("quit");
-                    sw.Flush();
+                    _Sw.WriteLine("quit");
+                    _Sw.Flush();
                 }
                 catch (Exception)
                 {
@@ -59,15 +60,17 @@ namespace Client
                 }
                 finally
                 {   //quit
-                    tcpcli.Close();
+                    _Tcpcli.Close();
                     Environment.Exit(1);
                 }
             };
 
             //get and send message
             string cont = "";
-            this.stream = tcpcli.GetStream();
-            this.sw = new StreamWriter(stream);
+            this._Stream = _Tcpcli.GetStream();
+            this._Sw = new StreamWriter(_Stream);
+            this._Sr = new StreamReader(_Stream);
+
             do{
                 Console.WriteLine("Please enter a sentence: ");
                 string sending = "";
@@ -87,43 +90,85 @@ namespace Client
                 //send string to server
                 try
                 {
-                    sw.WriteLine("host: {0}", tcpcli.Client.RemoteEndPoint); //RemoteEndPoint=Ip-adress+Port
-                    sw.WriteLine(sending);  //send string
-                    sw.WriteLine();
-                    sw.Flush(); //write out everything, if there is still something in the buffer
+                    _Sw.WriteLine("host: {0}", _Tcpcli.Client.RemoteEndPoint); //RemoteEndPoint=Ip-adress+Port
+                    _Sw.WriteLine(sending);  //send string
+                    _Sw.WriteLine();
+                    _Sw.Flush(); //write out everything, if there is still something in the buffer
                 }
                 catch (IOException e)
                 { 
                     //connection lost, quit
-                    tcpcli.Close();
+                    _Tcpcli.Close();
                     Console.WriteLine("Connection lost.");
                     Console.WriteLine(e.Message);
                     Console.ReadLine();
                     Environment.Exit(0);
                 }
 
+                //get and print out answer from server
+                try
+                {
+                    this.ReceiveAnswer();
+                }
+                catch (Exception)
+                {
+                    this.QuitConnection();
+                }
+
+                //another sentence?
                 Console.WriteLine("Continue? (y/n)");
                 do{
                 cont = Console.ReadLine();
                 } while (cont.Length == 0);
             } while(cont[0] == 'y');
 
+            this.QuitConnection();
+        }
+
+        private void ReceiveAnswer()
+        {
+            //read
+            try
+            {
+                string answer =_Sr.ReadLine();
+                if (answer != null)
+                {
+                    Console.WriteLine(answer);
+                }
+                else { Console.WriteLine("Keine Antwort empfangen."); }
+            }
+            catch (Exception)
+            { _Sr.Close(); throw; }
+        }
+
+        private void QuitConnection()
+        {
             //send quit message to server.
             try
             {
-                sw.WriteLine("quit");
-                sw.Flush();
+                _Sw.WriteLine("quit");
+                _Sw.Flush();
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 //connection lost, quit
                 Console.WriteLine("Connection lost.");
-                Console.WriteLine(e.Message);              
+                Console.WriteLine(e.Message);
             }
             finally
-            { 
+            {
                 //quit the application
-                tcpcli.Close();
+                _Tcpcli.Close();
+                //close reading end
+                try
+                {
+                    _Sr.Close();
+                    _Sw.Close();
+                }
+                catch (Exception e) 
+                { 
+                    Console.WriteLine("Der Stream " + e.Source + "wurde bereits geschlossen.");
+                }
                 Console.WriteLine();
                 Console.WriteLine("-------------------------");
                 Console.WriteLine("You quit the connection.");
