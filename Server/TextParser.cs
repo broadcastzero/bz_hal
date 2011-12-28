@@ -48,7 +48,7 @@ namespace Server
                 throw new InvalidSentenceException(errmsg);
             }
 
-            char[] seps = { ' ', '.', '?' };
+            char[] seps = { ' ', '.', '?', '!' };
             string[] words = sentence.Split(seps);
 
             //create word-instance for each word and save it into list

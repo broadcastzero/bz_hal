@@ -77,7 +77,7 @@ namespace PluginNav
                 // get new instance
                 _Map.Clear();
                 Console.WriteLine("Die Karte wird neu aufbereitet...");
-
+                for (int i = 0; i <= 500000; i++) ;
                 _Map.Add("Alserstrasse", "Wien");
                 _Map.Add("Linzerstrasse", "Tirol");
                 // add some code here
