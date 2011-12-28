@@ -18,8 +18,8 @@ namespace PluginNav
             {
                 if (w.Type == 'Q' && w.Value.ToLower() == "wo" && wo_counted == false)
                 { priority += 5; wo_counted = true; }
-                else if((w.Value.ToLower() == "strasse" || w.Value.ToLower() == "straße" || 
-                    w.Value.ToLower() == "dorf") && str_counted == false)
+                else if((w.Value.ToLower().Contains("strasse") || w.Value.ToLower().Contains("straße") || 
+                    w.Value.ToLower().Contains("dorf")) && str_counted == false)
                 { priority += 2; str_counted = true; }
                 //is it a question? -> priority++
                 else if (w.Type == 'M' && w.Value == "?")
