@@ -96,7 +96,17 @@ namespace PluginNav
 
             // is list empty? -> load!
             if (_Map.Count == 0)
-            { this.LoadMap(); }
+            {
+                try
+                {
+                    this.LoadMap();
+                }
+                catch (System.InvalidOperationException e)
+                {
+                    answer = e.Message;
+                    Console.WriteLine(e.Message); 
+                }
+            }
 
             /* searching in list will be coded here */
             return answer;
