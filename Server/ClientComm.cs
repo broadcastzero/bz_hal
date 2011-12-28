@@ -91,7 +91,7 @@ namespace Server
                 }
                 catch (FileNotFoundException e)
                 {
-                    // there are no plugins
+                    // there are no plugins - quit
                     Console.WriteLine(e.Message);
                     break;
                 }
@@ -127,7 +127,7 @@ namespace Server
             {
                 answer = _Pm.SendListToPlugins(wordlist);
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException) //wrong path - quit!
             { throw; }
             this.SendAnswerToClient(host, answer);
         }

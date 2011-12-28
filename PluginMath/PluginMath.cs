@@ -8,6 +8,8 @@ namespace PluginMath
     {
         private int _pos;
 
+        /* If math plugin finds a word with the type 'C', it knows that it can handle it */
+        /* -> return priority 10 (highest) */
         public int GetPriority(List<Word> wordlist)
         {
             _pos = 0;
@@ -25,6 +27,7 @@ namespace PluginMath
             { _pos = pos; return 10; }
         }
 
+        /* If math plugin has "won" the competition, calculate and return result string */
         public string CalculateSentence(List<Word> wordlist)
         {
             string answer = "Wenn das eine Rechnung sein soll, dann kann ich damit nichts anfangen.";
