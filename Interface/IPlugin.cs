@@ -6,6 +6,8 @@ namespace Interface
 {
     public interface IPlugin
     {
+        string Name { get; }
+
         /// <summary>
         /// Does this plugin know how to handle the sentence? - search for keywords!
         /// </summary>

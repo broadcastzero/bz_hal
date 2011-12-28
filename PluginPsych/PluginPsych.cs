@@ -6,6 +6,9 @@ namespace PluginPsych
 {
     public class PluginPsych : IPlugin
     {
+        private string _Name = "Psychater";
+        public string Name { get { return _Name; } }
+
         public int GetPriority(List<Word> wordlist)
         {
             return 0;

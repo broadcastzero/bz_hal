@@ -8,6 +8,9 @@ namespace PluginMath
     {
         private int _pos;
 
+        private string _Name = "Mathematiker";
+        public string Name { get { return _Name; } }
+
         /* If math plugin finds a word with the type 'C', it knows that it can handle it */
         /* -> return priority 10 (highest) */
         public int GetPriority(List<Word> wordlist)
