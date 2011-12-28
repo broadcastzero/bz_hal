@@ -67,6 +67,7 @@ namespace PluginNav
         /* Load OpenStreetMap into _Map variable */
         public void LoadMap()
         {
+            Console.WriteLine("Karte wird geladen...");
             // is _Map locked (loaded at the moment)? -> return error
             if (Monitor.TryEnter(_Map) == false)
             { throw new InvalidOperationException("Die Karte wird gerade von jemand anders neu aufbereitet!"); }
@@ -77,7 +78,7 @@ namespace PluginNav
                 // get new instance
                 _Map.Clear();
                 Console.WriteLine("Die Karte wird neu aufbereitet...");
-                for (int i = 0; i <= 9000000; i++) ;
+                for (int i = 0; i <= 900000000; i++) ;
                 _Map.Add("Alserstrasse", "Wien");
                 _Map.Add("Linzerstrasse", "Tirol");
                 // add some code here
