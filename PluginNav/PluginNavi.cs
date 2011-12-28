@@ -77,7 +77,7 @@ namespace PluginNav
                 // get new instance
                 _Map.Clear();
                 Console.WriteLine("Die Karte wird neu aufbereitet...");
-                for (int i = 0; i <= 500000; i++) ;
+                for (int i = 0; i <= 9000000; i++) ;
                 _Map.Add("Alserstrasse", "Wien");
                 _Map.Add("Linzerstrasse", "Tirol");
                 // add some code here
@@ -94,8 +94,19 @@ namespace PluginNav
             // Standard answer
             string answer = "Wenn du navigieren willst, dann stelle deine Frage bitte präziser.";
 
+            // shall map be reloaded?
+            int load = 0;
+            foreach(Word w in wordlist)
+            {
+                if (w.Value.ToLower() == "karte" || w.Value.ToLower() == "neu" ||
+                    w.Value.ToLower() == "auf" || w.Value.ToLower() == "bereite")
+                {
+                    load++;
+                }
+            }
+
             // is list empty? -> load!
-            if (_Map.Count == 0)
+            if (_Map.Count == 0 || load > 3)
             {
                 try
                 {
