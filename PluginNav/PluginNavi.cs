@@ -9,6 +9,16 @@ namespace PluginNav
     {
         /* PRIVATE VARS */
         private static SortedList<string, string> _Map = null;
+        private string _Name = "Navigator";
+
+        /* PUBLIC VARS */
+        public static SortedList<string, string> Map
+        {
+            get { return _Map; }
+            set { }
+        }
+
+        public string Name { get { return _Name; } }
 
         /* CONSTRUCTOR */
         public PluginNavi()
@@ -45,21 +55,27 @@ namespace PluginNav
         }
 
         /* Load OpenStreetMap into _Map variable */
-        public string LoadMap()
+        public void LoadMap()
         {
             // is _Map locked (loaded at the moment)? -> return error
             if (Monitor.TryEnter(_Map) == false)
-            { return "Die Karte wird gerade von jemand anders neu aufbereitet!"; }
-            
+            { throw new InvalidOperationException("Die Karte wird gerade von jemand anders neu aufbereitet!"); }
+
+            // make it threadsafe
             lock (_Map)
             {
+                // get new instance
+                _Map.Clear();
                 Console.WriteLine("Die Karte wird neu aufbereitet...");
+
+                _Map.Add("Alserstrasse", "Wien");
+                _Map.Add("Linzerstrasse", "Tirol");
                 // add some code here
             }
 
             //return success
-            string answer = "Die Karte wurde neu aufbereitet.";
-            return answer;
+            //string answer = "Die Karte wurde neu aufbereitet.";
+            //return answer;
         }
 
         /* Find out where Client wants to be navigated, search in internal List and return answer */

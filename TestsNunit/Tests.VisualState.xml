@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ShowCheckBoxes="false">
   <TopNode>[0-1000]C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\Tests.nunit</TopNode>
-  <SelectedNode>[0-1018]PluginNavTest.GetPriorityTest.GetAnotherPriorityTest</SelectedNode>
+  <SelectedNode>[0-1022]PluginNavTest.CalculateSentenceTest.MapAlreadyLoadsTest</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1000]C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\Tests.nunit" Expanded="true" />
@@ -12,8 +12,9 @@
     <Node UniqueName="[0-1014]C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\TextParserTest\bin\Debug\TextParserTest.dll" Expanded="true" />
     <Node UniqueName="[0-1015]TextParserTest" Expanded="true" />
     <Node UniqueName="[0-1009]TextParserTest.SplitsCorrectlyTest" Expanded="true" />
-    <Node UniqueName="[0-1020]C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\PluginNavTest\bin\Debug\PluginNavTest.dll" Expanded="true" />
-    <Node UniqueName="[0-1021]PluginNavTest" Expanded="true" />
+    <Node UniqueName="[0-1024]C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\PluginNavTest\bin\Debug\PluginNavTest.dll" Expanded="true" />
+    <Node UniqueName="[0-1025]PluginNavTest" Expanded="true" />
+    <Node UniqueName="[0-1020]PluginNavTest.CalculateSentenceTest" Expanded="true" />
     <Node UniqueName="[0-1016]PluginNavTest.GetPriorityTest" Expanded="true" />
   </Nodes>
 </VisualState>
