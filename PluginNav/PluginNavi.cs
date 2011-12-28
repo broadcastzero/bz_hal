@@ -1,11 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using Interface;
+using System.Threading;
 
 namespace PluginNav
 {
     public class PluginNavi : IPlugin
     {
+        /* PRIVATE VARS */
+        private static SortedList<string, string> _Map = null;
+
+        /* CONSTRUCTOR */
+        public PluginNavi()
+        {
+            _Map = new SortedList<string, string>();
+        }
+
         /* Calculate priority of Navigator */
         public int GetPriority(List<Word> wordlist)
         {
@@ -32,6 +42,22 @@ namespace PluginNav
             { priority = 10; }
 
             return priority;
+        }
+
+        /* Load OpenStreetMap into _Map variable */
+        public string LoadMap()
+        {
+            // is _Map locked (loaded at the moment)?
+            if (Monitor.TryEnter(_Map) == false)
+            { return "Die Karte wird gerade von jemand anders neu aufbereitet!"; }
+            lock (_Map)
+            {
+            
+            }
+
+            //return success
+            string answer = "Die Karte wurde neu aufbereitet.";
+            return answer;
         }
 
         /* Find out where Client wants to be navigated, search in internal List and return answer */
