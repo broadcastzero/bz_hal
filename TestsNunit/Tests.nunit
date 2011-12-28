@@ -3,6 +3,7 @@
   <Config name="Debug" binpathtype="Auto">
     <assembly path="PluginManagerTest\bin\Debug\PluginManagerTest.dll" />
     <assembly path="TextParserTest\bin\Debug\TextParserTest.dll" />
+    <assembly path="PluginNavTest\bin\Debug\PluginNavTest.dll" />
   </Config>
   <Config name="Release" binpathtype="Auto" />
 </NUnitProject>

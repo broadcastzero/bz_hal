@@ -34,9 +34,11 @@ namespace PluginNav
             return priority;
         }
 
+        /* Find out where Client wants to be navigated, search in internal List and return answer */
         public string CalculateSentence(List<Word> wordlist)
         {
-            string answer = "Antwort des Navigators";
+            string answer = "Wenn du navigieren willst, dann stelle deine Frage bitte präziser.";
+            /* searching in list will be coded here */
             return answer;
         }
     }
