@@ -47,12 +47,14 @@ namespace PluginNav
         /* Load OpenStreetMap into _Map variable */
         public string LoadMap()
         {
-            // is _Map locked (loaded at the moment)?
+            // is _Map locked (loaded at the moment)? -> return error
             if (Monitor.TryEnter(_Map) == false)
             { return "Die Karte wird gerade von jemand anders neu aufbereitet!"; }
+            
             lock (_Map)
             {
-            
+                Console.WriteLine("Die Karte wird neu aufbereitet...");
+                // add some code here
             }
 
             //return success
@@ -63,7 +65,13 @@ namespace PluginNav
         /* Find out where Client wants to be navigated, search in internal List and return answer */
         public string CalculateSentence(List<Word> wordlist)
         {
+            // Standard answer
             string answer = "Wenn du navigieren willst, dann stelle deine Frage bitte präziser.";
+
+            // is list empty? -> load!
+            if (_Map.Count == 0)
+            { this.LoadMap(); }
+
             /* searching in list will be coded here */
             return answer;
         }
