@@ -12,8 +12,8 @@
     <Node UniqueName="[0-1014]C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\TextParserTest\bin\Debug\TextParserTest.dll" Expanded="true" />
     <Node UniqueName="[0-1015]TextParserTest" Expanded="true" />
     <Node UniqueName="[0-1009]TextParserTest.SplitsCorrectlyTest" Expanded="true" />
-    <Node UniqueName="[0-1024]C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\PluginNavTest\bin\Debug\PluginNavTest.dll" Expanded="true" />
-    <Node UniqueName="[0-1025]PluginNavTest" Expanded="true" />
+    <Node UniqueName="[0-1023]C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\PluginNavTest\bin\Debug\PluginNavTest.dll" Expanded="true" />
+    <Node UniqueName="[0-1024]PluginNavTest" Expanded="true" />
     <Node UniqueName="[0-1020]PluginNavTest.CalculateSentenceTest" Expanded="true" />
     <Node UniqueName="[0-1016]PluginNavTest.GetPriorityTest" Expanded="true" />
   </Nodes>

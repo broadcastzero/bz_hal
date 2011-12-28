@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\Tests.nunit" total="13" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-28" time="16:26:43">
+<test-results name="C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\Tests.nunit" total="13" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-28" time="16:43:55">
   <environment nunit-version="2.5.10.11092" clr-version="4.0.30319.488" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0" machine-name="BZ-PC" user="broadcastzero" user-domain="BZ-PC" />
   <culture-info current-culture="de-AT" current-uiculture="de-DE" />
-  <test-suite type="Project" name="C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\Tests.nunit" executed="True" result="Success" success="True" time="0.802" asserts="0">
+  <test-suite type="Project" name="C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\Tests.nunit" executed="True" result="Success" success="True" time="1.317" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\PluginManagerTest\bin\Debug\PluginManagerTest.dll" executed="True" result="Success" success="True" time="0.346" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\PluginManagerTest\bin\Debug\PluginManagerTest.dll" executed="True" result="Success" success="True" time="0.489" asserts="0">
         <results>
-          <test-suite type="Namespace" name="PluginManagerTest" executed="True" result="Success" success="True" time="0.344" asserts="0">
+          <test-suite type="Namespace" name="PluginManagerTest" executed="True" result="Success" success="True" time="0.489" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="ReadPluginsTest" executed="True" result="Success" success="True" time="0.263" asserts="0">
+              <test-suite type="TestFixture" name="ReadPluginsTest" executed="True" result="Success" success="True" time="0.390" asserts="0">
                 <results>
-                  <test-case name="PluginManagerTest.ReadPluginsTest.NoPluginFoundExceptionTest" executed="True" result="Success" success="True" time="0.086" asserts="0" />
-                  <test-case name="PluginManagerTest.ReadPluginsTest.ReadPluginFolderTest" executed="True" result="Success" success="True" time="0.080" asserts="1" />
+                  <test-case name="PluginManagerTest.ReadPluginsTest.NoPluginFoundExceptionTest" executed="True" result="Success" success="True" time="0.093" asserts="0" />
+                  <test-case name="PluginManagerTest.ReadPluginsTest.ReadPluginFolderTest" executed="True" result="Success" success="True" time="0.101" asserts="1" />
                 </results>
               </test-suite>
-              <test-suite type="TestFixture" name="ReceivePluginAnswerTest" executed="True" result="Success" success="True" time="0.064" asserts="0">
+              <test-suite type="TestFixture" name="ReceivePluginAnswerTest" executed="True" result="Success" success="True" time="0.076" asserts="0">
                 <results>
-                  <test-case name="PluginManagerTest.ReceivePluginAnswerTest.GeneralAnswerTest" executed="True" result="Success" success="True" time="0.035" asserts="1" />
-                  <test-case name="PluginManagerTest.ReceivePluginAnswerTest.MathTest" executed="True" result="Success" success="True" time="0.008" asserts="2" />
+                  <test-case name="PluginManagerTest.ReceivePluginAnswerTest.GeneralAnswerTest" executed="True" result="Success" success="True" time="0.041" asserts="1" />
+                  <test-case name="PluginManagerTest.ReceivePluginAnswerTest.MathTest" executed="True" result="Success" success="True" time="0.007" asserts="2" />
                 </results>
               </test-suite>
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\TextParserTest\bin\Debug\TextParserTest.dll" executed="True" result="Success" success="True" time="0.137" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\TextParserTest\bin\Debug\TextParserTest.dll" executed="True" result="Success" success="True" time="0.148" asserts="0">
         <results>
-          <test-suite type="Namespace" name="TextParserTest" executed="True" result="Success" success="True" time="0.136" asserts="0">
+          <test-suite type="Namespace" name="TextParserTest" executed="True" result="Success" success="True" time="0.147" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="SplitsCorrectlyTest" executed="True" result="Success" success="True" time="0.135" asserts="0">
+              <test-suite type="TestFixture" name="SplitsCorrectlyTest" executed="True" result="Success" success="True" time="0.146" asserts="0">
                 <results>
                   <test-case name="TextParserTest.SplitsCorrectlyTest.InvalidSentenceExceptionTest" executed="True" result="Success" success="True" time="0.003" asserts="0" />
                   <test-case name="TextParserTest.SplitsCorrectlyTest.MathTest" executed="True" result="Success" success="True" time="0.041" asserts="1" />
@@ -41,20 +41,20 @@
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\PluginNavTest\bin\Debug\PluginNavTest.dll" executed="True" result="Success" success="True" time="0.206" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\GPR3\bz_hal\TestsNunit\PluginNavTest\bin\Debug\PluginNavTest.dll" executed="True" result="Success" success="True" time="0.527" asserts="0">
         <results>
-          <test-suite type="Namespace" name="PluginNavTest" executed="True" result="Success" success="True" time="0.205" asserts="0">
+          <test-suite type="Namespace" name="PluginNavTest" executed="True" result="Success" success="True" time="0.526" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="CalculateSentenceTest" executed="True" result="Success" success="True" time="0.143" asserts="0">
+              <test-suite type="TestFixture" name="CalculateSentenceTest" executed="True" result="Success" success="True" time="0.483" asserts="0">
                 <results>
-                  <test-case name="PluginNavTest.CalculateSentenceTest.LoadListTest" executed="True" result="Success" success="True" time="0.027" asserts="1" />
-                  <test-case name="PluginNavTest.CalculateSentenceTest.MapAlreadyLoadsTest" executed="True" result="Success" success="True" time="0.064" asserts="1" />
+                  <test-case name="PluginNavTest.CalculateSentenceTest.LoadListTest" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+                  <test-case name="PluginNavTest.CalculateSentenceTest.MapAlreadyLoadsTest" executed="True" result="Success" success="True" time="0.409" asserts="1" />
                 </results>
               </test-suite>
-              <test-suite type="TestFixture" name="GetPriorityTest" executed="True" result="Success" success="True" time="0.032" asserts="0">
+              <test-suite type="TestFixture" name="GetPriorityTest" executed="True" result="Success" success="True" time="0.033" asserts="0">
                 <results>
-                  <test-case name="PluginNavTest.GetPriorityTest.GetAnotherPriorityTest" executed="True" result="Success" success="True" time="0.008" asserts="1" />
-                  <test-case name="PluginNavTest.GetPriorityTest.GetAPriorityTest" executed="True" result="Success" success="True" time="0.003" asserts="1" />
+                  <test-case name="PluginNavTest.GetPriorityTest.GetAnotherPriorityTest" executed="True" result="Success" success="True" time="0.009" asserts="1" />
+                  <test-case name="PluginNavTest.GetPriorityTest.GetAPriorityTest" executed="True" result="Success" success="True" time="0.002" asserts="1" />
                   <test-case name="PluginNavTest.GetPriorityTest.GetLastPriorityTest" executed="True" result="Success" success="True" time="0.002" asserts="1" />
                 </results>
               </test-suite>

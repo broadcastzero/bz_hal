@@ -30,10 +30,12 @@ namespace PluginNav
         public int GetPriority(List<Word> wordlist)
         {
             int priority = 0;
+
             // defines, whether string "wo" or streetname have been found before - only count once!
             bool wo_counted = false;
             bool str_counted = false;
             bool isquestion = false;
+            int loadmap=0;
 
             foreach(Word w in wordlist)
             {
@@ -45,11 +47,19 @@ namespace PluginNav
                 //is it a question? -> priority++
                 else if (w.Type == 'M' && w.Value == "?")
                 { priority += 1; }
+                // if map shall be reloaded
+                else if (w.Value.ToLower() == "karte" || w.Value.ToLower() == "neu" ||
+                    w.Value.ToLower() == "auf" || w.Value.ToLower() == "bereite")
+                {
+                    loadmap++;
+                }
             }
 
             // if everything fits -> 10 (highest)
             if (wo_counted == true && str_counted == true && isquestion == true)
             { priority = 10; }
+            // if map shall be reloaded
+            else if (loadmap > 3) { priority = 10; }
 
             return priority;
         }
