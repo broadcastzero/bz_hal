@@ -152,8 +152,15 @@ namespace Server
                 if (prior > priority) { priority = prior; master = plug; }
             }
             // if at least one plugin thinks it's responsible, print out the answer of the Plugin with the highest priority
-            if (master != null) { answer = master.CalculateSentence(wlist);  }
-            else { answer = "Dazu sage ich besser nichts."; }
+            try
+            {
+                if (master != null) { answer = master.CalculateSentence(wlist); }
+                else { answer = "Dazu sage ich besser nichts."; }
+            }
+            catch (Exception e)
+            {
+                answer = e.Message;
+            }
 
             foreach (Word w in wlist)
             { Console.WriteLine(w.Value + "-" + w.Type + "-" + w.Position); }

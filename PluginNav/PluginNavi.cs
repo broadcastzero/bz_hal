@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Interface;
 using System.Threading;
+using System.Xml;
 
 namespace PluginNav
 {
@@ -11,7 +12,8 @@ namespace PluginNav
         // a SortedList requires less memory than a Dictionary, but requires more time to lookup
         // to improve -> quit after first not matching street
         // for there might be more than one city with this streetname
-        // see http://www.dotnetperls.com/sortedlist for further details
+        // see http://www.dotnetperls.com/sortedlist 
+        // and http://wiki.openstreetmap.org/wiki/Points_of_interest for further details
 
         private static SortedList<string, string> _Map = null;
         private string _Name;
@@ -97,8 +99,12 @@ namespace PluginNav
                 // <node...>
                 // <tag k="name" v="Graz" />
                 // </node>
-
-
+                try
+                {
+                    XmlReader reader = XmlReader.Create(this._PathToXml);
+                }
+                catch (Exception)
+                { throw; } //forward to Pluginmanager
 
             }
 
