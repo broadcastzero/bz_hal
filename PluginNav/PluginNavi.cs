@@ -17,10 +17,10 @@ namespace PluginNav
 
         private static SortedList<string, string> _Map = null;
         private string _Name;
-        private string _PathToXml;
 
         /* PUBLIC VARS */
         public bool disposed;
+        public string PathToXml;
 
         public static SortedList<string, string> Map
         {
@@ -35,7 +35,7 @@ namespace PluginNav
         {
             this.disposed = false;
             _Name = "Navigator";
-            _PathToXml = "./Map/austria.osm";
+            PathToXml = "./Map/austria.osm";
             _Map = new SortedList<string, string>();
         }
 
@@ -92,8 +92,8 @@ namespace PluginNav
                 _Map.Clear();
                 Console.WriteLine("Die Karte wird neu aufbereitet...");
                 //for (int i = 0; i <= 900000000; i++) ;
-                _Map.Add("Alserstrasse", "Wien");
-                _Map.Add("Linzerstrasse", "Tirol");
+                //_Map.Add("Alserstrasse", "Wien");
+                //_Map.Add("Linzerstrasse", "Tirol");
 
                 // Example for Point of Interest: 
                 // <node...>
@@ -101,7 +101,7 @@ namespace PluginNav
                 // </node>
                 try
                 {
-                    XmlReader reader = XmlReader.Create(this._PathToXml);
+                    XmlReader reader = XmlReader.Create(this.PathToXml);
                 }
                 catch (Exception)
                 { throw; } //forward to Pluginmanager

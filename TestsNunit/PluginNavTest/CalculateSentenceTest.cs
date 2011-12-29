@@ -28,8 +28,6 @@ namespace PluginNavTest
             }
             catch (InvalidOperationException)
             { Console.WriteLine("Karte wird gerade neu aufbereitet."); }
-            catch (Exception e)
-            { Console.WriteLine(e.Message); }
 
             Assert.That(PluginNavi.Map.Count != 0);
         }
