@@ -48,20 +48,14 @@ namespace Server
             }
             catch (Exception) { throw; }
 
-            // if server quits, set objects to null (for destructor)
-            Console.CancelKeyPress += delegate(object sender, ConsoleCancelEventArgs e)
-            {
-                this._Pm = null;
-                this._Tp = null;
-                Console.WriteLine("---------------------");
-                Console.WriteLine("Garbage Collector");
-                Console.WriteLine("---------------------");
-                GC.Collect(); //force GarbageCollector to do his work
-                Console.WriteLine("finished!");
-                Console.WriteLine("---------------------");
-                
-                Console.ReadLine();
-            };
+            // if server quits, destroy objects
+            System.AppDomain.CurrentDomain.ProcessExit += new EventHandler(ServerQuittingHandler);
+            Console.CancelKeyPress += new ConsoleCancelEventHandler(ServerQuittingHandler);
+        }
+
+        void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         /* Entry-class for each connected thread */
@@ -178,6 +172,27 @@ namespace Server
             {
                 throw;
             }
+        }
+
+        /* Cleanup when Server quits */
+        private void ServerQuittingHandler(object sender, ConsoleCancelEventArgs args)
+        {
+            this._Pm = null;
+            this._Tp = null;
+            Console.WriteLine("---------------------");
+            Console.WriteLine("Garbage Collector");
+            Console.WriteLine("---------------------");
+            GC.Collect(); //force GarbageCollector to do his work
+            Console.WriteLine("finished!");
+            Console.WriteLine("---------------------");
+                
+            Console.ReadLine();
+        }
+
+        /* Overload for ProcessExit */
+        private void ServerQuittingHandler(object sender, EventArgs args)
+        {
+            this.ServerQuittingHandler(null, null);
         }
     }
 }
