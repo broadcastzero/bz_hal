@@ -47,6 +47,21 @@ namespace Server
                 Environment.Exit(1);
             }
             catch (Exception) { throw; }
+
+            // if server quits, set objects to null (for destructor)
+            Console.CancelKeyPress += delegate(object sender, ConsoleCancelEventArgs e)
+            {
+                this._Pm = null;
+                this._Tp = null;
+                Console.WriteLine("---------------------");
+                Console.WriteLine("Garbage Collector");
+                Console.WriteLine("---------------------");
+                GC.Collect(); //force GarbageCollector to do his work
+                Console.WriteLine("finished!");
+                Console.WriteLine("---------------------");
+                
+                Console.ReadLine();
+            };
         }
 
         /* Entry-class for each connected thread */

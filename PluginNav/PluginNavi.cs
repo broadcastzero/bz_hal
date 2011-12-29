@@ -164,10 +164,18 @@ namespace PluginNav
             {
                 _Map.Clear();
                 _Map = null;
+                Console.WriteLine("Maplist has been cleared by disposing");
             }
 
             // clear external ressources (files, database, ...)
             // -> there are none!
+            // Dispose probably won't be called from Server-Application => in this case, clear map-list anyway
+            if (_Map != null)
+            {
+                _Map.Clear();
+                _Map = null;
+                Console.WriteLine("Maplist has been cleared by destructing");
+            }
         }
 
         /* DESTRUCTOR - call Dispose(bool disposing) */
