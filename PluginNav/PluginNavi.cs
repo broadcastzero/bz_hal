@@ -8,8 +8,14 @@ namespace PluginNav
     public class PluginNavi : IPlugin
     {
         /* PRIVATE VARS */
+        // a SortedList requires less memory than a Dictionary, but requires more time to lookup
+        // to improve -> quit after first not matching street
+        // for there might be more than one city with this streetname
+        // see http://www.dotnetperls.com/sortedlist for further details
+
         private static SortedList<string, string> _Map = null;
-        private string _Name = "Navigator";
+        private string _Name;
+        private string _PathToXml;
 
         /* PUBLIC VARS */
         public static SortedList<string, string> Map
@@ -23,6 +29,8 @@ namespace PluginNav
         /* CONSTRUCTOR */
         public PluginNavi()
         {
+            _Name = "Navigator";
+            _PathToXml = "./Map/austria.osm";
             _Map = new SortedList<string, string>();
         }
 
@@ -78,10 +86,15 @@ namespace PluginNav
                 // get new instance
                 _Map.Clear();
                 Console.WriteLine("Die Karte wird neu aufbereitet...");
-                for (int i = 0; i <= 900000000; i++) ;
+                //for (int i = 0; i <= 900000000; i++) ;
                 _Map.Add("Alserstrasse", "Wien");
                 _Map.Add("Linzerstrasse", "Tirol");
-                // add some code here
+
+                // Example for Point of Interest: 
+                // <node...>
+                // <tag k="name" v="Graz" />
+                // </node>
+
             }
 
             //return success
@@ -119,6 +132,9 @@ namespace PluginNav
                     Console.WriteLine(e.Message); 
                 }
             }
+
+            // get street from list
+            foreach 
 
             /* searching in list will be coded here */
             return answer;
