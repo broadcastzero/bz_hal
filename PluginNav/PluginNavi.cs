@@ -19,8 +19,8 @@ namespace PluginNav
         private string _Name;
 
         /* PUBLIC VARS */
-        public bool disposed;
-        public string PathToXml;
+        public bool disposed { get; set; }
+        public string PathToXml { get; set; }
 
         public static SortedList<string, string> Map
         {

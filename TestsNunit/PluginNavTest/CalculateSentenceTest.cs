@@ -16,6 +16,7 @@ namespace PluginNavTest
         public void SetUp()
         {
             _Navi = new PluginNavi();
+            _Navi.PathToXml = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\SWE\\bz_hal\\Server\\bin\\Debug\\Map\\austria.osm";
         }
 
         /* Test if loading the xml-file works */
