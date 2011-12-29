@@ -17,6 +17,8 @@ namespace PluginManagerTest
         {
             this._Tp = new TextParser();
             this._Pm = new PluginManager();
+            // set PluginPath differently (for Directory is not the same!)
+            this._Pm.PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\SWE\\bz_hal\\Server\\bin\\Debug\\Plugins";
             this._Pm.LoadPlugins();
         }
 

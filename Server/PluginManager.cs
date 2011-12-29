@@ -16,9 +16,9 @@ namespace Server
     public class PluginManager
     {
         /* PRIVATE VARS */
-        private string _PlugPath;
 
         /* PUBLIC VARS */
+        public string PlugPath { get; set; }
         public static List<string> PluginList = null; //pluginlist has only to be created 1 time
         // in here, loaded Plugins will be stored. maybe make static later.
         private List<IPlugin> InterfaceInstances = null;
@@ -26,11 +26,9 @@ namespace Server
         /* CONSTRUCTOR - precache plugings, throw exception if no plugins could be loaded */
         public PluginManager()
         {
-            // work now with absolute path (because Nunit test would throw exception when using CurrentDir
-            // maybe change to Environment.CurrentDirectory later!
-            //_PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\SWE\\0 Hauptuebung\\HAL_Solution\\Server\\bin\\Debug\\Plugins\\";
-            _PlugPath = "C:\\Users\\broadcastzero\\0 FH\\3. Semester\\GPR3\\bz_hal\\Server\\bin\\Debug\\Plugins\\";
-            Console.WriteLine("Path: " + _PlugPath);
+            // Plugins must be stored in the same folder as the Server.exe is
+            PlugPath = "./Plugins";
+            Console.WriteLine("Path: " + PlugPath);
             InterfaceInstances = new List<IPlugin>();
         }
 
@@ -39,7 +37,7 @@ namespace Server
         /// </summary>
         public void LoadPlugins()
         {
-            if (!Directory.Exists(_PlugPath))
+            if (!Directory.Exists(PlugPath))
             {
                 throw new FileNotFoundException("Das Plugin-Verzeichnis konnte nicht geoeffnet werden!");
             }
@@ -53,7 +51,7 @@ namespace Server
             // read folder
             try
             {
-                string[] files = Directory.GetFiles(_PlugPath);
+                string[] files = Directory.GetFiles(PlugPath);
                 //add to list if it is a .dll-file and doesn't already exist
                 Console.WriteLine("---------------------");
                 Console.WriteLine("Loading Plugins...");
