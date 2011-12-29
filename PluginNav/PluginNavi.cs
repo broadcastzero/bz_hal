@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace PluginNav
 {
-    public class PluginNavi : IPlugin
+    public class PluginNavi : IPlugin, IDisposable
     {
         /* PRIVATE VARS */
         // a SortedList requires less memory than a Dictionary, but requires more time to lookup
@@ -18,6 +18,8 @@ namespace PluginNav
         private string _PathToXml;
 
         /* PUBLIC VARS */
+        public bool disposed;
+
         public static SortedList<string, string> Map
         {
             get { return _Map; }
@@ -29,6 +31,7 @@ namespace PluginNav
         /* CONSTRUCTOR */
         public PluginNavi()
         {
+            this.disposed = false;
             _Name = "Navigator";
             _PathToXml = "./Map/austria.osm";
             _Map = new SortedList<string, string>();
@@ -95,6 +98,8 @@ namespace PluginNav
                 // <tag k="name" v="Graz" />
                 // </node>
 
+
+
             }
 
             //return success
@@ -134,10 +139,41 @@ namespace PluginNav
             }
 
             // get street from list
-            foreach 
+            //foreach 
 
             /* searching in list will be coded here */
             return answer;
+        }
+
+        /* DISPOSE - clear Map-List! */
+        public void Dispose()
+        {
+            // only first time!
+            if (!this.disposed)
+            {
+                this.Dispose(true);
+                GC.SuppressFinalize(this);
+                this.disposed = true;
+            }
+        }
+        // overloaded Dispose-function
+        protected virtual void Dispose(bool disposing)
+        {
+            // clear inner ressources
+            if (disposing)
+            {
+                _Map.Clear();
+                _Map = null;
+            }
+
+            // clear external ressources (files, database, ...)
+            // -> there are none!
+        }
+
+        /* DESTRUCTOR - call Dispose(bool disposing) */
+        ~PluginNavi()
+        {
+            this.Dispose(false);
         }
     }
 }
