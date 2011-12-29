@@ -99,14 +99,57 @@ namespace PluginNav
                 // <node...>
                 // <tag k="name" v="Graz" />
                 // </node>
+
+                XmlReader reader = null;
+                int i=0;
+                bool check = false; // if nodename = <tag>, check if it is a PointOfInterest, ignore otherwise
                 try
                 {
-                    XmlReader reader = XmlReader.Create(this.PathToXml);
+                    reader = XmlReader.Create(this.PathToXml);
+                    // read xml-file
+                    while (reader.Read())
+                    {
+                        if (reader.NodeType == XmlNodeType.Element && reader.HasAttributes) // <osm>, <node>, <tag>
+                        {
+                            switch (reader.Name)
+                            {
+                                // check node if it is a tag-Element
+                                case "tag": check = true;
+                                    break;
+                                // ignore everything else
+                                default: 
+                                    break;
+                            }
+
+                            //check <tag>-node for further information
+                            if (check == true && reader.HasAttributes)
+                            {
+                                reader.MoveToFirstAttribute();
+                                string att;
+
+                                do
+                                {
+                                    att = reader.ReadString();
+                                    Console.WriteLine(att);
+                                } while (reader.MoveToNextAttribute());
+                            }
+
+                            i++;
+                            if (i == 100) break;
+                            check = false; // set to false again
+                        }
+                    }
                 }
                 catch (Exception)
-                { throw; } //forward to Pluginmanager
-
-            }
+                {                   
+                    throw; //forward to Pluginmanager
+                }
+                finally
+                {
+                    if (reader != null)
+                    { reader.Close(); }
+                }
+            } //end lock
 
             //return success
             //string answer = "Die Karte wurde neu aufbereitet.";
