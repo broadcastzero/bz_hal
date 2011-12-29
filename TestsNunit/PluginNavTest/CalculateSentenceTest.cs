@@ -71,11 +71,11 @@ namespace PluginNavTest
         }
 
         /* Test if searching works */
-        /*[Test]
+        [Test]
         public void SearchTest()
         {
             Assert.That(1 == 3); // add senseful code here
-        }*/
+        }
 
     }
 }
