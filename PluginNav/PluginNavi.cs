@@ -38,7 +38,12 @@ namespace PluginNav
             this.disposed = false;
             _Name = "Navigator";
             PathToXml = "./Map/austria.osm";
-            _Map = new SortedList<string, string>();
+
+            // only first time!
+            if (_Map == null)
+            {
+                _Map = new SortedList<string, string>();
+            }
         }
 
         /* Calculate priority of Navigator */
@@ -112,10 +117,12 @@ namespace PluginNav
                     reader = XmlReader.Create(this.PathToXml);
                     string lastcity = null;
                     string laststreet = null;
-
+                    int a = 0;
                     // read xml-file - get next <tag>
                     while (reader.ReadToFollowing("tag"))
                     {
+                        a++;
+                        if (a == 11000) break;
                         if (reader.NodeType == XmlNodeType.Element && reader.HasAttributes) // (<osm>, <node>,) <tag>
                         {
                             // run through all attributes until you find "is_in" (city)
