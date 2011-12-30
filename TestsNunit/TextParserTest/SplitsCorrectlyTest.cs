@@ -71,5 +71,19 @@ namespace TextParserTest
             string s = "Das ist ein Test";
             _Tp.SplitSentence(s);
         }
+
+        [Test]
+        public void NaviTest()
+        {
+            string s = "Wo ist die Alser Straße?";
+            _Tp.SplitSentence(s);
+            
+            foreach(Word w in _Tp.AnalysedWords)
+            {
+                Console.WriteLine("{0} - {1}", w.Value, w.Type);
+            }
+
+            Assert.That(_Tp.AnalysedWords[3].Type == 'N' && _Tp.AnalysedWords[4].Type == 'N');
+        }
     }
 }

@@ -75,6 +75,8 @@ namespace PluginNavTest
         [Test]
         public void SearchTest()
         {
+            _Navi.LoadMap();
+            //_Navi.CalculateSentence();
             Assert.That(1 == 3); // add senseful code here
         }
 
