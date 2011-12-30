@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Interface;
 using System.Threading;
 using System.Xml;
+using System.Diagnostics;
 
 namespace PluginNav
 {
@@ -80,6 +81,9 @@ namespace PluginNav
         /* Load OpenStreetMap into _Map variable */
         public void LoadMap()
         {
+            // stop time elapsing while loading map
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
             Console.WriteLine("Karte wird geladen...");
             // is _Map locked (loaded at the moment)? -> return error
             if (Monitor.TryEnter(_Map) == false)
@@ -107,35 +111,54 @@ namespace PluginNav
                 {
                     reader = XmlReader.Create(this.PathToXml);
                     // read xml-file
-                    while (reader.Read())
+                    while (reader.ReadToFollowing("tag"))
                     {
                         if (reader.NodeType == XmlNodeType.Element && reader.HasAttributes) // <osm>, <node>, <tag>
                         {
-                            switch (reader.Name)
+                            // run through all attributes until you find "is_in" (city)
+                            while(reader.MoveToNextAttribute())
                             {
-                                // check node if it is a tag-Element
-                                case "tag": check = true;
-                                    break;
-                                // ignore everything else
-                                default: 
-                                    break;
+                                string name = null;
+                                string att = null;
+                                name = reader.Name; // k, v -> check .osm-file, line 10.947 i.e.
+                                att = reader.Value; // name, Point, positive, motorway_junction, Brannenburg, ... (Value!)
+                                // only combination k + name is useful for us
+                                if (name == "k" && att == "is_in")
+                                { check = true; break; }
                             }
 
-                            //check <tag>-node for further information
-                            if (check == true && reader.HasAttributes)
+                            // if city has been found, save city and get street
+                            if (check == true)
                             {
-                                reader.MoveToFirstAttribute();
-                                string att;
+                                string city = null;
+                                string street = null;
+                                while (reader.MoveToNextAttribute())
+                                { 
+                                    if(reader.Name == "v")
+                                    { city = reader.Value; }
+                                }
 
-                                do
+                                // get streetname (is stored in following node)
+                                reader.ReadToFollowing("tag");
+                                while (reader.MoveToNextAttribute())
                                 {
-                                    att = reader.ReadString();
-                                    Console.WriteLine(att);
-                                } while (reader.MoveToNextAttribute());
-                            }
+                                    // no city is stored - continue with next data
+                                    if (reader.Name == "k" && reader.Value != "name")
+                                    { break; }
+                                    // otherwise, save value
+                                    if (reader.Name == "v")
+                                    { street = reader.Value; }
+                                }
+
+                                //if there is a street, save combination in list
+                                if (street != null)
+                                {
+                                    Console.WriteLine(city + " -- " + street);
+                                }
+                            } // end save city and street
 
                             i++;
-                            if (i == 100) break;
+                            if (i == 11000) break;
                             check = false; // set to false again
                         }
                     }
@@ -151,6 +174,9 @@ namespace PluginNav
                 }
             } //end lock
 
+
+            watch.Stop();
+            Console.WriteLine("Finished loading map. Time needed: {0}", watch.Elapsed);
             //return success
             //string answer = "Die Karte wurde neu aufbereitet.";
             //return answer;
