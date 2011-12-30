@@ -95,12 +95,12 @@ namespace PluginNav
                 // get new instance
                 _Map.Clear();
                 Console.WriteLine("Die Karte wird neu aufbereitet...");
-                //for (int i = 0; i <= 900000000; i++) ;
-                //_Map.Add("Alserstrasse", "Wien");
-                //_Map.Add("Linzerstrasse", "Tirol");
 
                 // Example for Point of Interest: 
                 // <node...>
+                // ...
+                // <tag k="is_in" v="Steiermark"
+                // ...
                 // <tag k="name" v="Graz" />
                 // </node>
 
@@ -110,10 +110,11 @@ namespace PluginNav
                 try
                 {
                     reader = XmlReader.Create(this.PathToXml);
-                    // read xml-file
+
+                    // read xml-file - get next <tag>
                     while (reader.ReadToFollowing("tag"))
                     {
-                        if (reader.NodeType == XmlNodeType.Element && reader.HasAttributes) // <osm>, <node>, <tag>
+                        if (reader.NodeType == XmlNodeType.Element && reader.HasAttributes) // (<osm>, <node>,) <tag>
                         {
                             // run through all attributes until you find "is_in" (city)
                             while(reader.MoveToNextAttribute())
@@ -132,28 +133,35 @@ namespace PluginNav
                             {
                                 string city = null;
                                 string street = null;
+
+                                // save city
                                 while (reader.MoveToNextAttribute())
                                 { 
                                     if(reader.Name == "v")
                                     { city = reader.Value; }
                                 }
 
-                                // get streetname (is stored in following node)
-                                reader.ReadToFollowing("tag");
-                                while (reader.MoveToNextAttribute())
+                                // get streetname (is stored in one of the following tags)
+                                // if not, reader will land at next <node> => not found, break
+                                bool found = false;
+                                while (reader.Read() && reader.Value != "node" && found == false)
                                 {
-                                    // no city is stored - continue with next data
-                                    if (reader.Name == "k" && reader.Value != "name")
-                                    { break; }
-                                    // otherwise, save value
-                                    if (reader.Name == "v")
-                                    { street = reader.Value; }
+                                    while (reader.MoveToNextAttribute())
+                                    {
+                                        // no city is stored here - continue with next tag
+                                        if (reader.Name == "k" && reader.Value != "name")
+                                        { break; }
+
+                                        // city is stored - read next attribute, which will be v=<cityname>
+                                        if (reader.Name == "v")
+                                        { street = reader.Value; found = true; }
+                                    }
                                 }
 
-                                //if there is a street, save combination in list
-                                if (street != null)
+                                // if data has been found - save in list
+                                if (city != null && street != null)
                                 {
-                                    Console.WriteLine(city + " -- " + street);
+                                    Console.WriteLine("{0} -- {1}", city, street);
                                 }
                             } // end save city and street
 
