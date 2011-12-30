@@ -105,7 +105,6 @@ namespace PluginNav
                 // </node>
 
                 XmlReader reader = null;
-                int i=0;
                 bool check = false; // if nodename = <tag>, check if it is a PointOfInterest, ignore otherwise
                 try
                 {
@@ -161,13 +160,10 @@ namespace PluginNav
                                 // if data has been found - save in list
                                 if (city != null && street != null)
                                 {
-                                    Console.WriteLine("{0} -- {1}", city, street);
                                     _Map.Add(street, city);
                                 }
                             } // end save city and street
 
-                            i++;
-                            if (i == 11000) break;
                             check = false; // set to false again
                         }
                     }
@@ -227,7 +223,10 @@ namespace PluginNav
             }
 
             // get street from list
-            //foreach 
+            //foreach ( in _Map)
+            { 
+                
+            }
 
             /* searching in list will be coded here */
             return answer;

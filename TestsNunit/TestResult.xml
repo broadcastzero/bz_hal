@@ -1,17 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-30" time="12:32:06">
+<test-results name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-30" time="12:56:25">
   <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.5448" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0" machine-name="BZ-LAPTOP" user="broadcastzero" user-domain="bz-LAPTOP" />
   <culture-info current-culture="de-AT" current-uiculture="en-US" />
-  <test-suite type="Project" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" executed="True" result="Success" success="True" time="1.835" asserts="0">
+  <test-suite type="Project" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" executed="True" result="Failure" success="False" time="1.591" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\PluginNavTest\bin\Debug\PluginNavTest.dll" executed="True" result="Success" success="True" time="1.734" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\PluginNavTest\bin\Debug\PluginNavTest.dll" executed="True" result="Failure" success="False" time="1.513" asserts="0">
         <results>
-          <test-suite type="Namespace" name="PluginNavTest" executed="True" result="Success" success="True" time="1.731" asserts="0">
+          <test-suite type="Namespace" name="PluginNavTest" executed="True" result="Failure" success="False" time="1.513" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="CalculateSentenceTest" executed="True" result="Success" success="True" time="1.710" asserts="0">
+              <test-suite type="TestFixture" name="CalculateSentenceTest" executed="True" result="Failure" success="False" time="1.513" asserts="0">
                 <results>
-                  <test-case name="PluginNavTest.CalculateSentenceTest.LoadListTest" executed="True" result="Success" success="True" time="1.375" asserts="1" />
+                  <test-case name="PluginNavTest.CalculateSentenceTest.LoadListTest" executed="True" result="Error" success="False" time="1.373" asserts="0">
+                    <failure>
+                      <message><![CDATA[System.ArgumentException : An entry with the same key already exists.]]></message>
+                      <stack-trace><![CDATA[at System.Collections.Generic.SortedList`2.Add(TKey key, TValue value)
+at PluginNav.PluginNavi.LoadMap() in C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\PluginNav\PluginNavi.cs:line 189
+at PluginNavTest.CalculateSentenceTest.LoadListTest() in C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\PluginNavTest\CalculateSentenceTest.cs:line 28
+]]></stack-trace>
+                    </failure>
+                  </test-case>
                 </results>
               </test-suite>
             </results>
