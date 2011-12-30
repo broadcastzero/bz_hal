@@ -225,7 +225,9 @@ namespace PluginNav
             }
 
             // is list empty? -> load!
-            if (_Map.Count == 0 || load > 3)
+            if(_Map.Count == 0 && load <= 3) {return "Die Karte wurde noch nicht aufbereitet!";}
+
+            if (load > 3)
             {
                 try
                 {
@@ -246,10 +248,7 @@ namespace PluginNav
             }
 
             // get street from list
-            //foreach ( in _Map)
-            { 
-                
-            }
+            //_Map.IndexOfKey();
 
             /* searching in list will be coded here */
             return answer;
@@ -261,13 +260,13 @@ namespace PluginNav
             // only first time!
             if (!this.disposed)
             {
-                this.Dispose(true);
+                PluginNavi.Dispose(true);
                 GC.SuppressFinalize(this);
                 this.disposed = true;
             }
         }
         // overloaded Dispose-function
-        protected virtual void Dispose(bool disposing)
+        protected static void Dispose(bool disposing)
         {
             // clear inner ressources
             if (disposing)
@@ -291,7 +290,7 @@ namespace PluginNav
         /* DESTRUCTOR - call Dispose(bool disposing) */
         ~PluginNavi()
         {
-            this.Dispose(false);
+            PluginNavi.Dispose(false);
         }
     }
 }
