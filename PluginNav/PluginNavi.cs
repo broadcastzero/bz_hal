@@ -245,8 +245,33 @@ namespace PluginNav
                 return "Die Karte wurde neu aufbereitet.";
             }
 
+            // search for which street? -> get nouns!
+            string street = "";
+            int num = 0;
+            foreach (Word w in wordlist)
+            {
+                if (w.Type == 'N')
+                {
+                    if (num != 0)
+                    { street += " "; }
+                    
+                    street += w.Value;
+                    num++;
+                }
+            }
+
             // get street from list
-            //_Map.IndexOfKey();
+            int index = -1;
+            try
+            {
+                index = _Map.IndexOfKey(street);
+            }
+            catch (ArgumentNullException)
+            { return "Diese Straße gibt es nicht!"; }
+
+            if (index >= 0)
+            { answer = street + " befindet sich in " + _Map[street]; }
+            else { return "Diese Straße gibt es nicht";}
 
             /* searching in list will be coded here */
             return answer;
