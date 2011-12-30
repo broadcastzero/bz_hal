@@ -109,6 +109,8 @@ namespace PluginNav
                 try
                 {
                     reader = XmlReader.Create(this.PathToXml);
+                    string lastcity = null;
+                    string laststreet = null;
 
                     // read xml-file - get next <tag>
                     while (reader.ReadToFollowing("tag"))
@@ -160,6 +162,10 @@ namespace PluginNav
                                 // if data has been found - save in list
                                 if (city != null && street != null)
                                 {
+                                    // avoid double entries
+                                    if (lastcity == city && laststreet == street)
+                                    { continue; }
+
                                     int i=0;
                                     // if a street with this name already exists, number it
                                     // i.e. Linzerstraße, Linzerstraße(1), Linzerstraße(2)
@@ -175,6 +181,8 @@ namespace PluginNav
                                         street += addon;
                                     }
                                     _Map.Add(street, city);
+                                    lastcity = city;
+                                    laststreet = street;
                                     Console.WriteLine(street + " in " + city + " added.");
                                 }
                             } // end save city and street
