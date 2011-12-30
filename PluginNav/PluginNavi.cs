@@ -18,6 +18,7 @@ namespace PluginNav
 
         private static SortedList<string, string> _Map = null;
         private string _Name;
+        private static readonly object m_WriteLock = new object();
 
         /* PUBLIC VARS */
         public bool disposed { get; set; }
@@ -85,12 +86,12 @@ namespace PluginNav
             Stopwatch watch = new Stopwatch();
             watch.Start();
             Console.WriteLine("Karte wird geladen...");
-            // is _Map locked (loaded at the moment)? -> return error
-            if (Monitor.TryEnter(_Map) == false)
-            { throw new InvalidOperationException("Die Karte wird gerade von jemand anders neu aufbereitet!"); }
 
             // make it threadsafe
-            lock (_Map)
+            if (Monitor.TryEnter(m_WriteLock) == false)
+            { throw new InvalidOperationException("Die Karte wird gerade von jemand anders neu aufbereitet!"); }
+            
+            lock(m_WriteLock)
             {
                 // get new instance
                 _Map.Clear();
@@ -270,7 +271,13 @@ namespace PluginNav
             { return "Diese Straße gibt es nicht!"; }
 
             if (index >= 0)
-            { answer = street + " befindet sich in " + _Map[street]; }
+            {
+                //foreach (string key in _Map.Keys)
+                //{ 
+                    //quit when first entry without '('
+                //}
+                answer = street + " befindet sich in " + _Map[street]; 
+            }
             else { return "Diese Straße gibt es nicht";}
 
             /* searching in list will be coded here */
