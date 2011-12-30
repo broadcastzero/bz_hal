@@ -78,5 +78,13 @@ namespace PluginNavTest
             Assert.That(1 == 3); // add senseful code here
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            Console.WriteLine("Tearing down...");
+            // free map memory
+            _Navi.Dispose();
+            GC.Collect();
+        }
     }
 }

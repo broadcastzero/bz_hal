@@ -162,6 +162,7 @@ namespace PluginNav
                                 if (city != null && street != null)
                                 {
                                     Console.WriteLine("{0} -- {1}", city, street);
+                                    _Map.Add(street, city);
                                 }
                             } // end save city and street
 
@@ -182,12 +183,9 @@ namespace PluginNav
                 }
             } //end lock
 
-
             watch.Stop();
             Console.WriteLine("Finished loading map. Time needed: {0}", watch.Elapsed);
-            //return success
-            //string answer = "Die Karte wurde neu aufbereitet.";
-            //return answer;
+            // success
         }
 
         /* Find out where Client wants to be navigated, search in internal List and return answer */
@@ -214,10 +212,17 @@ namespace PluginNav
                 {
                     this.LoadMap();
                 }
+                // failure
                 catch (System.InvalidOperationException e)
                 {
                     answer = e.Message;
-                    Console.WriteLine(e.Message); 
+                    Console.WriteLine(e.Message);
+                    return answer;
+                }
+                // success - if client only wanted map to load, return. otherwise, continue searching.
+                if (load > 3)
+                {
+                    return "Die Karte wurde neu aufbereitet.";
                 }
             }
 
