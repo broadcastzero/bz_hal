@@ -160,7 +160,22 @@ namespace PluginNav
                                 // if data has been found - save in list
                                 if (city != null && street != null)
                                 {
+                                    int i=0;
+                                    // if a street with this name already exists, number it
+                                    // i.e. Linzerstraße, Linzerstraße(1), Linzerstraße(2)
+                                    // must be split later to receive multiple data!!
+                                    string addon = "";
+                                    while (_Map.ContainsKey(street) && _Map.ContainsKey(street+addon))
+                                    {
+                                        i++;
+                                        addon = "(" + i + ")";
+                                    }
+                                    if (addon.Length != 0)
+                                    {
+                                        street += addon;
+                                    }
                                     _Map.Add(street, city);
+                                    Console.WriteLine(street + " in " + city + " added.");
                                 }
                             } // end save city and street
 
