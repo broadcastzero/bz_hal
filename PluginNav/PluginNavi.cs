@@ -241,10 +241,8 @@ namespace PluginNav
                     return answer;
                 }
                 // success - if client only wanted map to load, return. otherwise, continue searching.
-                if (load > 3)
-                {
-                    return "Die Karte wurde neu aufbereitet.";
-                }
+
+                return "Die Karte wurde neu aufbereitet.";
             }
 
             // get street from list

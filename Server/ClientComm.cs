@@ -175,16 +175,21 @@ namespace Server
         }
 
         /* Cleanup when Server quits */
+        static bool cleaned = false;
         private void ServerQuittingHandler(object sender, ConsoleCancelEventArgs args)
         {
-            this._Pm = null;
-            this._Tp = null;
-            Console.WriteLine("---------------------");
-            Console.WriteLine("Garbage Collector");
-            Console.WriteLine("---------------------");
-            GC.Collect(); //force GarbageCollector to do his work
-            Console.WriteLine("finished!");
-            Console.WriteLine("---------------------");
+            if (ClientComm.cleaned == false)
+            {
+                ClientComm.cleaned = true;
+                this._Pm = null;
+                this._Tp = null;
+                Console.WriteLine("---------------------");
+                Console.WriteLine("Garbage Collector");
+                Console.WriteLine("---------------------");
+                GC.Collect(); //force GarbageCollector to do his work
+                Console.WriteLine("finished!");
+                Console.WriteLine("---------------------");
+            }
                 
             Console.ReadLine();
         }
