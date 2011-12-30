@@ -117,12 +117,12 @@ namespace PluginNav
                     reader = XmlReader.Create(this.PathToXml);
                     string lastcity = null;
                     string laststreet = null;
-                    int a = 0;
+                    //int a = 0; //for faster calculating - quit after line 11.000
                     // read xml-file - get next <tag>
                     while (reader.ReadToFollowing("tag"))
                     {
-                        a++;
-                        if (a == 11000) break;
+                        //a++;
+                        //if (a == 11000) break;
                         if (reader.NodeType == XmlNodeType.Element && reader.HasAttributes) // (<osm>, <node>,) <tag>
                         {
                             // run through all attributes until you find "is_in" (city)
