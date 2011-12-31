@@ -1,5 +1,5 @@
 ﻿/* NS: PluginPsychTest */
-/* FN: PluginPsych.cs */
+/* FN: PriorityTest.cs */
 /* FUNCTION: Prioritiy tests for the psychiater plugin */
 
 using System;

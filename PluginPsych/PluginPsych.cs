@@ -51,7 +51,7 @@ namespace PluginPsych
             {
                 switch (w.Type)
                 { 
-                    case 'N':
+                    case 'N': case 'S':
                         if (_Responsibles.Contains(w.Value))
                         {
                             prior += 5;
@@ -68,50 +68,55 @@ namespace PluginPsych
         public string CalculateSentence(List<Word> wordlist)
         {
             string answer = "Das ist interessant, erzählen Sie mir mehr davon!";
-
+            bool found = false;
             foreach (Word w in wordlist)
             {
                 switch (w.Type)
                 {
-                    case 'N':
+                    // if noun or subject
+                    case 'N': case 'S':
                         // normal answers
                         if (_Responsibles.Contains(w.Value))
                         {
                             switch (w.Value)
                             {
-                                case "Vater": answer = "Sie sollten Ihren Vater wieder mal besuchen!";
+                                case "Vater": answer = "Sie sollten Ihren Vater wieder mal besuchen!"; found = true;
                                     break;
-                                case "Mutter": answer = "Ihre Mutter ist ein guter Mensch, denke ich.";
+                                case "Mutter": answer = "Ihre Mutter ist ein guter Mensch, denke ich."; found = true;
                                     break;
-                                case "Kinder": answer = "Kinder sind ein Segen - aber leben Sie zuerst Ihr Leben!";
+                                case "Kinder": answer = "Kinder sind ein Segen - aber leben Sie zuerst Ihr Leben!"; found = true;
                                     break;
-                                case "Famile": answer = "Eine intakte Familie ist die Vorraussetzung für ein intaktes Seelenleben.";
+                                case "Familie": answer = "Eine intakte Familie ist die Vorraussetzung für ein intaktes Seelenleben."; found = true;
                                     break;
-                                case "Haustier": answer = "Tiere brauchen viel Liebe, denken Sie immer daran!";
+                                case "Haustier": answer = "Tiere brauchen viel Liebe, denken Sie immer daran!"; found = true;
                                     break;
-                                case "Hund": answer = "Hunde sind treue Freunde!";
+                                case "Hund": answer = "Hunde sind treue Freunde!"; found = true;
                                     break;
-                                case "Katze": answer = "Katzen mag ich am liebsten!";
+                                case "Katze": answer = "Katzen mag ich am liebsten!"; found = true;
                                     break;
-                                case "Alkohol": answer = "Versprechen Sie mir, weniger Alkohol zu trinken?";
+                                case "Alkohol": answer = "Versprechen Sie mir, weniger Alkohol zu trinken?"; found = true;
                                     break;
-                                case "Sorgen": answer = "Welche Sorgen haben Sie denn genau?";
+                                case "Sorgen": answer = "Welche Sorgen haben Sie denn genau?"; found = true;
                                     break;
-                                case "Geld": answer = "Ja, von dem Teufelszeug ist immer zu wenig da. Achja, ich nehme nur Bargeld!";
+                                case "Geld": answer = "Ja, von dem Teufelszeug ist immer zu wenig da. Achja, ich nehme nur Bargeld!"; found = true;
                                     break;
-                                case "Leben": answer = "Leben...erzählen Sie mir nichts vom Leben...";
+                                case "Leben": answer = "Leben...erzählen Sie mir nichts vom Leben..."; found = true;
                                     break;
-                                case "Antwort": answer = "42";
+                                case "Antwort": answer = "42"; found = true;
+                                    break;
+                                default:
                                     break;
                             }
                         }
+                        else if (found == true)
+                        { break; }
                         // backupanswers
-                        else 
+                        else
                         {
-                            answer = answertypes[answerindex];
+                            answer = answertypes[answerindex] + w;
                             answerindex++;
                             if(answerindex == 5) 
-                            { answerindex =0; }
+                            { answerindex = 0; }
                         }
                         break;
                     default:
