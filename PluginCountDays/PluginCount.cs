@@ -17,7 +17,24 @@ namespace PluginCount
         /* -> return priority 10 (highest) */
         public int GetPriority(List<Word> wordlist)
         {
-            return 0;
+            int prior = 0;
+            foreach (Word w in wordlist)
+            { 
+                switch(w.Type)
+                {
+                    case 'N':
+                        if (w.Value == "Tage")
+                        { prior += 3; }
+                        else if (w.Value == "Geburtstag")
+                        { prior += 3; }
+                        break;
+                    default:
+                        if (w.Value == "vergangen")
+                        { prior += 3; }
+                        break;
+                }
+            }
+            return prior;
         }
 
         /* If math plugin has "won" the competition, calculate and return result string */
