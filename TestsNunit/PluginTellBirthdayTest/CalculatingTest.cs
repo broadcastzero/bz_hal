@@ -25,7 +25,7 @@ namespace PluginTellBirthdayTest
             Word w3 = new Word("Geburtstag");
             w3.Type = 'N';
             Word w4 = new Word("am");
-            Word w5 = new Word("01/01/2000");
+            Word w5 = new Word("31/12/2000");
             w5.Type = 'N';
             Word w6 = new Word("?");
 
@@ -38,6 +38,8 @@ namespace PluginTellBirthdayTest
 
             string answ = _Tell.CalculateSentence(wlist);
             Console.WriteLine(answ);
+
+            Assert.That(answ == "Der 31/12/2000 war ein Sunday!" || answ == "Der 31/12/2000 war ein Sunday! \nOh, du hast heute Geburtstag. Ich wünsche dir alles Gute!");
         }
     }
 }

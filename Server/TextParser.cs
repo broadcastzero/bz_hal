@@ -16,7 +16,6 @@ namespace Server
         private List<string> _Subject;
         private List<string> _Articles;
         private List<string> _QuestionWords;
-        private List<string> _Possessive;
 
         /* PUBLIC VARS */
         public List<Word> AnalysedWords { get; set; }
