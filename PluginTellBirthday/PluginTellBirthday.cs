@@ -40,7 +40,9 @@ namespace PluginCount
         public string CalculateSentence(List<Word> wordlist)
         {
             string answer = "Ich habe mich leider verzählt...bitte gib dein Geburtsdatum in dem Format DD/MM/YYYY ein!";
-            int day, month, year;
+            int day=0;
+            int month = 0;
+            int year = 0;
 
             // try to get birthday
             foreach (Word w in wordlist)
@@ -51,20 +53,30 @@ namespace PluginCount
                     string[] result = w.Value.Split(trimmer);
 
                     bool success = int.TryParse(result[0], out day);
-                    if (success == false) { answer = "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
+                    if (success == false) { return "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
 
                     success = int.TryParse(result[1], out month);
-                    if (success == false) { answer = "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
+                    if (success == false) { return "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
 
                     success = int.TryParse(result[2], out year);
-                    if (success == false) { answer = "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
+                    if (success == false) { return "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
 
                     break;
                 }
             }
 
-            // count days since birthday
-
+            // do vars contain value?
+            if (day == 0 || month == 0 || year == 0)
+            { return "Ich habe mich verzählt..nur wieso?"; }
+            else
+            {
+                // which day was it?
+                DateTime Birthday = new DateTime(year, month, day);
+                answer = "Der " + day + "/" + month + "/" + year +" war ein " + Birthday.DayOfWeek.ToString() +"!";
+                // happy birthday-easteregg
+                if (Birthday.Day == DateTime.Today.Day && Birthday.Month == DateTime.Today.Month)
+                { answer += " \nOh, du hast heute Geburtstag. Ich wünsche dir alles Gute!"; }
+            }
 
             return answer;
         }
