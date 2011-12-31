@@ -8,7 +8,7 @@ using Interface;
 
 namespace PluginPsych
 {
-    public class PluginPsych : IPlugin
+    public class PluginPsycho : IPlugin
     {
         private string _Name = "Psychater";
         public string Name { get { return _Name; } }
@@ -18,7 +18,7 @@ namespace PluginPsych
         private string[] answertypes;
 
         /* CONSTRUCTOR - add responsibles */
-        public PluginPsych()
+        public PluginPsycho()
         {
             // backup answers
             answerindex = 0;
