@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
-  <TopNode>[0-1005]PluginManagerTest.ReadPluginsTest.NoPluginFoundExceptionTest</TopNode>
+  <TopNode>[0-1006]PluginManagerTest.ReadPluginsTest.ReadPluginFolderTest</TopNode>
   <SelectedNode>[0-1024]PluginNavTest.CalculateSentenceTest.SearchTest</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>

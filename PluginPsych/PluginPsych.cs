@@ -54,7 +54,7 @@ namespace PluginPsych
                     case 'N':
                         if (_Responsibles.Contains(w.Value))
                         {
-                            prior += 3;
+                            prior += 5;
                         }
                         break;
                     default:
