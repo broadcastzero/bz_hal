@@ -63,6 +63,7 @@ namespace PluginManagerTest
         public void ReadPluginFolderTest()
         {
             _Pm = new PluginManager();
+            _Pm.PlugPath = _PluginPath;
             try
             {
                 _Pm.LoadPlugins();

@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-31" time="15:01:51">
+<test-results name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" total="2" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-31" time="16:14:21">
   <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.5448" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0" machine-name="BZ-LAPTOP" user="broadcastzero" user-domain="bz-LAPTOP" />
   <culture-info current-culture="de-AT" current-uiculture="en-US" />
   <test-suite type="Project" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" executed="True" result="Success" success="True" time="0.016" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\PluginPsychTest\bin\Debug\PluginPsychTest.dll" executed="True" result="Success" success="True" time="0.016" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\PluginManagerTest\bin\Debug\PluginManagerTest.dll" executed="True" result="Success" success="True" time="0.015" asserts="0">
         <results>
-          <test-suite type="Namespace" name="PluginPsychTest" executed="True" result="Success" success="True" time="0.016" asserts="0">
+          <test-suite type="Namespace" name="PluginManagerTest" executed="True" result="Success" success="True" time="0.015" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="CalculatingTest" executed="True" result="Success" success="True" time="0.000" asserts="0">
+              <test-suite type="TestFixture" name="ReadPluginsTest" executed="True" result="Success" success="True" time="0.014" asserts="0">
                 <results>
-                  <test-case name="PluginPsychTest.CalculatingTest.CalculatingTest2" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                  <test-case name="PluginManagerTest.ReadPluginsTest.NoPluginFoundExceptionTest" executed="True" result="Success" success="True" time="0.003" asserts="0" />
+                  <test-case name="PluginManagerTest.ReadPluginsTest.ReadPluginFolderTest" executed="True" result="Success" success="True" time="0.001" asserts="1" />
                 </results>
               </test-suite>
             </results>
