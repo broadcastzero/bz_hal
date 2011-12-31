@@ -8,8 +8,8 @@ PluginNav/obj/
 PluginNav/bin/
 PluginPsych/obj/
 PluginPsych/bin/
-PluginCountDays/obj/
-PluginCountDays/bin/
+PluginTellBirthday/obj/
+PluginTellBirthday/bin/
 TestsNunit/TextParserTest/obj/
 TestsNunit/TextParsertest/bin/
 TestsNunit/PluginManagerTest/obj/
