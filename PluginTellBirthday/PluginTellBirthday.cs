@@ -1,14 +1,14 @@
-﻿/* NS: PluginCount */
-/* FN: PluginCount.cs */
+﻿/* NS: PluginTellDay */
+/* FN: PluginTellBirthday.cs */
 /* FUNCTION: A plugin which tells which day the user's birthday was */
 
 using System;
 using System.Collections.Generic;
 using Interface;
 
-namespace PluginCount
+namespace PluginTellDay
 {
-    public class PluginCount : IPlugin
+    public class PluginTellBirthday : IPlugin
     {
         private string _Name = "Geburtstagsermittler";
         public string Name { get { return _Name; } }
@@ -50,7 +50,8 @@ namespace PluginCount
                 if (w.Value[2] == '/' && w.Value[5] == '/' && w.Value.Length == 10)
                 {
                     char[] trimmer = {'/'};
-                    string[] result = w.Value.Split(trimmer);
+                    string[] result = new string[3];
+                    result = w.Value.Split(trimmer);
 
                     bool success = int.TryParse(result[0], out day);
                     if (success == false) { return "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }

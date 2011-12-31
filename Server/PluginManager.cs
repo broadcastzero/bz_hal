@@ -159,7 +159,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                answer = e.Message;
+                answer = e.Message + e.StackTrace;
             }
 
             foreach (Word w in wlist)
