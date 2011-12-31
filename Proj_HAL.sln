@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginNavTest", "TestsNunit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginPsychTest", "TestsNunit\PluginPsychTest\PluginPsychTest.csproj", "{A4D2FC22-1FC4-40E4-BA85-E944DD69046D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginCountDays", "PluginCountDays\PluginCountDays.csproj", "{F5ADF7DD-BC14-4872-979D-F6019BEC6421}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,16 @@ Global
 		{A4D2FC22-1FC4-40E4-BA85-E944DD69046D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A4D2FC22-1FC4-40E4-BA85-E944DD69046D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A4D2FC22-1FC4-40E4-BA85-E944DD69046D}.Release|x86.ActiveCfg = Release|Any CPU
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,5 +159,6 @@ Global
 		{4D142171-9719-446F-ABEF-58F90FC746A2} = {7A9E34F4-7D21-43B7-8201-52D3EAE3B353}
 		{83C9ABBE-51BA-43AB-A9D3-55192FCA68E0} = {7A9E34F4-7D21-43B7-8201-52D3EAE3B353}
 		{97A35694-80EB-4BEB-A48F-7F67890ACA72} = {7A9E34F4-7D21-43B7-8201-52D3EAE3B353}
+		{F5ADF7DD-BC14-4872-979D-F6019BEC6421} = {7A9E34F4-7D21-43B7-8201-52D3EAE3B353}
 	EndGlobalSection
 EndGlobal

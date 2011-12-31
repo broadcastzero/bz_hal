@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* NS: PluginMath */
+/* FN: PluginMath.cs */
+/* FUNCTION: A plugin which answers simple mathematical questions */
+
+using System;
 using System.Collections.Generic;
 using Interface;
 
