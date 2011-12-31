@@ -5,6 +5,7 @@
     <assembly path="TextParserTest\bin\Debug\TextParserTest.dll" />
     <assembly path="PluginNavTest\bin\Debug\PluginNavTest.dll" />
     <assembly path="PluginPsychTest\bin\Debug\PluginPsychTest.dll" />
+    <assembly path="PluginTellBirthdayTest\bin\Debug\PluginTellBirthdayTest.dll" />
   </Config>
   <Config name="Release" binpathtype="Auto" />
 </NUnitProject>
