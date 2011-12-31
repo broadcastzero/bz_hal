@@ -11,7 +11,8 @@ namespace PluginPsych
 
         public int GetPriority(List<Word> wordlist)
         {
-            return 0;
+
+            return 1;
         }
 
         public string CalculateSentence(List<Word> wordlist)

@@ -90,13 +90,12 @@ namespace PluginNav
             // stop time elapsing while loading map
             Stopwatch watch = new Stopwatch();
             watch.Start();
-            Console.WriteLine("Karte wird geladen...");
+            Console.WriteLine("Karte wird geladen...");            
 
             // make it threadsafe
-            if (Monitor.TryEnter(m_WriteLock) == false)
+            if (!Monitor.TryEnter(m_WriteLock))
             { throw new InvalidOperationException("Die Karte wird gerade von jemand anders neu aufbereitet!"); }
-            
-            lock(m_WriteLock)
+            else
             {
                 // get new instance
                 _Map.Clear();
@@ -208,6 +207,8 @@ namespace PluginNav
                     if (reader != null)
                     { reader.Close(); }
                 }
+
+                Monitor.Exit(m_WriteLock);
             } //end lock
 
             watch.Stop();
