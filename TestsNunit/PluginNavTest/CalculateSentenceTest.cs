@@ -75,9 +75,28 @@ namespace PluginNavTest
         [Test]
         public void SearchTest()
         {
+            List<Word> wordlist = new List<Word>();
+            Word w1 = new Word("Wo");
+            w1.Type = 'Q';
+
+            Word w2 = new Word("ist");
+            w2.Type = 'X';
+
+            Word w3 = new Word("Merzenstein");
+            w3.Type = 'N';
+
+            Word w4 = new Word("?");
+            w4.Type = 'M';
+
+            wordlist.Add(w1);
+            wordlist.Add(w2);
+            wordlist.Add(w3);
+            wordlist.Add(w4);
+
             _Navi.LoadMap();
-            //_Navi.CalculateSentence();
-            Assert.That(1 == 3); // add senseful code here
+            string answer = _Navi.CalculateSentence(wordlist);
+            Assert.That(answer.Contains("Zwettl"));
+            Console.WriteLine(answer);
         }
 
         [TearDown]
