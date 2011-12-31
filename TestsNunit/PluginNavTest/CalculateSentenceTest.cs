@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* NS: PluginNavTest */
+/* FN: CalculateSentenceTest.cs */
+/* FUNCTION: Test the NaviPlugin, if the place is located correctly */
+
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using PluginNav;

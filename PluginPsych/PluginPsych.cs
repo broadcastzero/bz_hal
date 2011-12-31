@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* NS: PluginPsych */
+/* FN: PluginPsych.cs */
+/* FUNCTION: A plugin which gives psychological answers to client inputs */
+
+using System;
 using System.Collections.Generic;
 using Interface;
 
@@ -22,6 +26,9 @@ namespace PluginPsych
             _Responsibles.Add("Haustier");
             _Responsibles.Add("Hund");
             _Responsibles.Add("Katze");
+            _Responsibles.Add("Alkohol");
+            _Responsibles.Add("Sorgen");
+            _Responsibles.Add("Geld");
         }
 
 

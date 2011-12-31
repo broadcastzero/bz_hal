@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* NS: PluginNav */
+/* FN: PluginNavi.cs */
+/* FUNCTION: A plugin which loads a xml-file and answers location questions */
+
+using System;
 using System.Collections.Generic;
 using Interface;
 using System.Threading;

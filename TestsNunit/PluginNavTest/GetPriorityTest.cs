@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* NS: PluginNavTest */
+/* FN: GetPriorityTest.cs */
+/* FUNCTION: Test the Navi Plugin, if priority is calculated correctly */
+
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using PluginNav;
