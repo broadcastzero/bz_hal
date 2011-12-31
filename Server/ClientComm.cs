@@ -98,6 +98,7 @@ namespace Server
                 catch (InvalidSentenceException e)
                 {
                     Console.WriteLine(e.Message);
+                    this.SendAnswerToClient(this._Sock.LocalEndPoint.AddressFamily.ToString(), e.Message);
                 }
                 catch (FileNotFoundException e)
                 {

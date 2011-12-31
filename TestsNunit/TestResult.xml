@@ -1,17 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-31" time="17:10:57">
+<test-results name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" total="20" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-31" time="17:29:03">
   <environment nunit-version="2.5.10.11092" clr-version="2.0.50727.5448" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.5.10\bin\net-2.0" machine-name="BZ-LAPTOP" user="broadcastzero" user-domain="bz-LAPTOP" />
   <culture-info current-culture="de-AT" current-uiculture="en-US" />
-  <test-suite type="Project" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" executed="True" result="Success" success="True" time="0.084" asserts="0">
+  <test-suite type="Project" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\Tests.nunit" executed="True" result="Success" success="True" time="985.851" asserts="0">
     <results>
-      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\PluginTellBirthdayTest\bin\Debug\PluginTellBirthdayTest.dll" executed="True" result="Success" success="True" time="0.071" asserts="0">
+      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\PluginManagerTest\bin\Debug\PluginManagerTest.dll" executed="True" result="Success" success="True" time="0.137" asserts="0">
         <results>
-          <test-suite type="Namespace" name="PluginTellBirthdayTest" executed="True" result="Success" success="True" time="0.071" asserts="0">
+          <test-suite type="Namespace" name="PluginManagerTest" executed="True" result="Success" success="True" time="0.137" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="CalculatingTest" executed="True" result="Success" success="True" time="0.068" asserts="0">
+              <test-suite type="TestFixture" name="ReadPluginsTest" executed="True" result="Success" success="True" time="0.100" asserts="0">
                 <results>
-                  <test-case name="PluginTellBirthdayTest.CalculatingTest.GetDay" executed="True" result="Success" success="True" time="0.056" asserts="1" />
+                  <test-case name="PluginManagerTest.ReadPluginsTest.NoPluginFoundExceptionTest" executed="True" result="Success" success="True" time="0.030" asserts="0" />
+                  <test-case name="PluginManagerTest.ReadPluginsTest.ReadPluginFolderTest" executed="True" result="Success" success="True" time="0.036" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="ReceivePluginAnswerTest" executed="True" result="Success" success="True" time="0.031" asserts="0">
+                <results>
+                  <test-case name="PluginManagerTest.ReceivePluginAnswerTest.GeneralAnswerTest" executed="True" result="Success" success="True" time="0.021" asserts="1" />
+                  <test-case name="PluginManagerTest.ReceivePluginAnswerTest.MathTest" executed="True" result="Success" success="True" time="0.003" asserts="2" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\TextParserTest\bin\Debug\TextParserTest.dll" executed="True" result="Success" success="True" time="0.050" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="TextParserTest" executed="True" result="Success" success="True" time="0.050" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="SplitsCorrectlyTest" executed="True" result="Success" success="True" time="0.049" asserts="0">
+                <results>
+                  <test-case name="TextParserTest.SplitsCorrectlyTest.InvalidSentenceExceptionTest" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="TextParserTest.SplitsCorrectlyTest.MathTest" executed="True" result="Success" success="True" time="0.013" asserts="1" />
+                  <test-case name="TextParserTest.SplitsCorrectlyTest.NaviTest" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                  <test-case name="TextParserTest.SplitsCorrectlyTest.SplitTest" executed="True" result="Success" success="True" time="0.012" asserts="5" />
+                  <test-case name="TextParserTest.SplitsCorrectlyTest.TypeTest" executed="True" result="Success" success="True" time="0.001" asserts="6" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\PluginNavTest\bin\Debug\PluginNavTest.dll" executed="True" result="Success" success="True" time="985.549" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="PluginNavTest" executed="True" result="Success" success="True" time="985.549" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="CalculateSentenceTest" executed="True" result="Success" success="True" time="688.791" asserts="0">
+                <results>
+                  <test-case name="PluginNavTest.CalculateSentenceTest.LoadListTest" executed="True" result="Success" success="True" time="96.992" asserts="1" />
+                  <test-case name="PluginNavTest.CalculateSentenceTest.MapAlreadyLoadsTest" executed="True" result="Success" success="True" time="77.416" asserts="1" />
+                  <test-case name="PluginNavTest.CalculateSentenceTest.SearchTest" executed="True" result="Success" success="True" time="80.239" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="GetPriorityTest" executed="True" result="Success" success="True" time="0.009" asserts="0">
+                <results>
+                  <test-case name="PluginNavTest.GetPriorityTest.GetAnotherPriorityTest" executed="True" result="Success" success="True" time="0.003" asserts="1" />
+                  <test-case name="PluginNavTest.GetPriorityTest.GetAPriorityTest" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                  <test-case name="PluginNavTest.GetPriorityTest.GetLastPriorityTest" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\PluginPsychTest\bin\Debug\PluginPsychTest.dll" executed="True" result="Success" success="True" time="0.046" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="PluginPsychTest" executed="True" result="Success" success="True" time="0.046" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="CalculatingTest" executed="True" result="Success" success="True" time="0.032" asserts="0">
+                <results>
+                  <test-case name="PluginPsychTest.CalculatingTest.CalculatingTest1" executed="True" result="Success" success="True" time="0.005" asserts="1" />
+                  <test-case name="PluginPsychTest.CalculatingTest.CalculatingTest2" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="PriorityTest" executed="True" result="Success" success="True" time="0.005" asserts="0">
+                <results>
+                  <test-case name="PluginPsychTest.PriorityTest.GetAnotherPriorityTest" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                  <test-case name="PluginPsychTest.PriorityTest.GetPriorityTest" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="Assembly" name="C:\Users\broadcastzero\0 FH\3. Semester\SWE\bz_hal\TestsNunit\PluginTellBirthdayTest\bin\Debug\PluginTellBirthdayTest.dll" executed="True" result="Success" success="True" time="0.019" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="PluginTellBirthdayTest" executed="True" result="Success" success="True" time="0.019" asserts="0">
+            <results>
+              <test-suite type="TestFixture" name="CalculatingTest" executed="True" result="Success" success="True" time="0.018" asserts="0">
+                <results>
+                  <test-case name="PluginTellBirthdayTest.CalculatingTest.GetDay" executed="True" result="Success" success="True" time="0.017" asserts="1" />
                 </results>
               </test-suite>
             </results>
