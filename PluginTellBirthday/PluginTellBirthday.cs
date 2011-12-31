@@ -47,22 +47,25 @@ namespace PluginTellDay
             // try to get birthday
             foreach (Word w in wordlist)
             {
-                if (w.Value[2] == '/' && w.Value[5] == '/' && w.Value.Length == 10)
+                if (w.Value.Length == 10)
                 {
-                    char[] trimmer = {'/'};
-                    string[] result = new string[3];
-                    result = w.Value.Split(trimmer);
+                    if (w.Value.ToString()[2] == '/' && w.Value.ToString()[5] == '/')
+                    {
+                        char[] trimmer = { '/' };
+                        string[] result = new string[3];
+                        result = w.Value.Split(trimmer);
 
-                    bool success = int.TryParse(result[0], out day);
-                    if (success == false) { return "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
+                        bool success = int.TryParse(result[0], out day);
+                        if (success == false) { return "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
 
-                    success = int.TryParse(result[1], out month);
-                    if (success == false) { return "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
+                        success = int.TryParse(result[1], out month);
+                        if (success == false) { return "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
 
-                    success = int.TryParse(result[2], out year);
-                    if (success == false) { return "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
+                        success = int.TryParse(result[2], out year);
+                        if (success == false) { return "Ich soll einen Buchstaben als Zahl verarbeiten? No way!"; }
 
-                    break;
+                        break;
+                    }
                 }
             }
 
