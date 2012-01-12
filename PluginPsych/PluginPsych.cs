@@ -46,7 +46,7 @@ namespace PluginPsych
         /* GET PRIORITY */
         public int GetPriority(List<Word> wordlist)
         {
-            int prior = 0;
+            int prior = 4; //Standard-Prior - Psychiater is always responsible
             foreach (Word w in wordlist)
             {
                 switch (w.Type)
@@ -104,7 +104,10 @@ namespace PluginPsych
                                     break;
                                 case "Antwort": answer = "42"; found = true;
                                     break;
-                                default:
+                                default: answer = answertypes[answerindex] + w.Value;
+                                        answerindex++;
+                                        if (answerindex == 5)
+                                        { answerindex = 0; }
                                     break;
                             }
                         }
@@ -113,7 +116,7 @@ namespace PluginPsych
                         // backupanswers
                         else
                         {
-                            answer = answertypes[answerindex] + w;
+                            answer = answertypes[answerindex] + w.Value;
                             answerindex++;
                             if(answerindex == 5) 
                             { answerindex = 0; }
